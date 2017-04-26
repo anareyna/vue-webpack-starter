@@ -1,7 +1,5 @@
-import Home from './components/Home.vue'
-import Contact from './components/Contact.vue'
+import ConcesionarioMiPerfil from 'views/concesionario/mi-perfil/routes.js'
 
 export const routes = [
-    {path: '/', component: Home},
-    {path: '/contacto', component: Contact},    
+ 	ConcesionarioMiPerfil
 ]

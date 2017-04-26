@@ -1,5 +1,22 @@
-<template lang="pug" src="./html/test.pug"></template>
+<template lang="pug">
+  #app
+    img(src="./assets/logo.png")
+    router-view
+</template>
 
-<script src="./js/test.js"></script>
+<script>
+export default {
+  name: 'app'
+}
+</script>
 
-<style lang="stylus" src="./css/style.styl"></style>
+<style lang="stylus">
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
