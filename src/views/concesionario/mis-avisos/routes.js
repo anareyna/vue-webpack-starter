@@ -1,5 +1,16 @@
-import Form from './components/Form/Form.vue'
+import Main from './Main.vue'
 
-export const routes = {
-    path: '/concesionario/mi-perfil/datos-personales', component: Form
+import AnadirAvisos from './AnadirAvisos.vue'
+import AvisosActivos from './AvisosActivos.vue'
+
+export default {
+    path      : '/concesionario/mis-avisos', 
+    component : Main,
+    children  : [{
+      path      : 'anadir-avisos',
+      component : AnadirAvisos
+    },{
+      path      : 'avisos-activos',
+      component : AvisosActivos
+    }]
 }

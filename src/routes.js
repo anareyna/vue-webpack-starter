@@ -1,5 +1,5 @@
-import ConcesionarioMiPerfil from 'views/concesionario/mi-perfil/routes.js'
+import ConcesionarioMisAvisos from './views/concesionario/mis-avisos/routes.js'
 
 export const routes = [
- 	ConcesionarioMiPerfil
+  ConcesionarioMisAvisos
 ]
