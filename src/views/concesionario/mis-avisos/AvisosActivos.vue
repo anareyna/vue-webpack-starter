@@ -1,9 +1,8 @@
 <template>
-	<h1>Avisos Activos</h1>
-	<!-- <breadcrumb
-		:param1=""
-	></breadcrumb>
-	<list-news></list-news> -->
+	<div>
+		<h1>Avisos Activos</h1>
+		<img src="../../../static/img/bg.png">
+	</div>
 </template>
 <script type="text/javascript">
 </script>

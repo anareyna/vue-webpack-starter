@@ -25,12 +25,19 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/
       },
-      {
+      /*{
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
         }
+      }*/
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
+          'url-loader?limit=10000',
+          'img-loader'
+        ]
       }
     ]
   },
