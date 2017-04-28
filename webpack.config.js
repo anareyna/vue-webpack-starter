@@ -11,19 +11,19 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
+        test    : /\.vue$/,
+        loader  : 'vue-loader',
+        options : {
+          loaders : {
               'stylus': 'vue-style-loader!css-loader!stylus-loader'
           }
           // other vue-loader options go here
         }
       },
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
+        test    : /\.js$/,
+        loader  : 'babel-loader',
+        exclude : /node_modules/
       },
       /*{
         test: /\.(png|jpg|gif|svg)$/,
@@ -33,12 +33,31 @@ module.exports = {
         }
       }*/
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        use: [
+        test : /\.(jpe?g|png|gif)$/i,
+        use  : [
           'url-loader?limit=10000',
           'img-loader'
         ]
-      }
+      },
+      {
+        test : /\.svg$/,
+        use  : [
+          {
+            loader: 'raw-loader'
+          },
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [
+                {removeTitle      : true},
+                {convertColors    : {shorthex : false}},
+                {convertPathData  : false},
+                {removeDimensions : true}
+              ]
+            }
+          }
+        ]
+      },
     ]
   },
   resolve: {
