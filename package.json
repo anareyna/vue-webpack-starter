@@ -12,7 +12,6 @@
     "axios": "^0.16.1",
     "babel-plugin-component": "^0.9.1",
     "element-ui": "^1.2.9",
-    "extract-text-webpack-plugin": "^2.1.0",
     "vue": "^2.2.1",
     "vue-router": "^2.5.2"
   },
