@@ -24,7 +24,7 @@
 <script type="text/javascript">	
 
 	import axios from 'axios'
-	let urlList 	 = 'http://localhost:3004/persons';
+	let urlList 	 = 'http://172.18.60.50:3004/persons';
 	
 	export default {
 			mounted(){				
