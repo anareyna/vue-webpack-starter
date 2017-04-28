@@ -33,7 +33,7 @@ Vue.use(Row)
 const router = new VueRouter(routes)
 
 new Vue({
-  el: '#app',
-  router,
-  render: h => h(App)
+    el: '#app',
+    router,
+    render: h => h(App)
 })
