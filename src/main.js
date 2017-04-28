@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-//import aaa from 'element-ui'
-import { Breadcrumb, BreadcrumbItem, Table, TableColumn } from 'element-ui'
+
+import { 
+	Breadcrumb, BreadcrumbItem, Table, TableColumn, Form, FormItem, 
+	Option, Col, CheckboxGroup, Checkbox, RadioGroup, Radio, Input, Button, Row} 
+	from 'element-ui'
 
 import routes from './routes'
 import App from './App.vue'
@@ -13,6 +16,17 @@ Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
 Vue.use(Table)
 Vue.use(TableColumn)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Option)
+Vue.use(Col)
+Vue.use(CheckboxGroup)
+Vue.use(Checkbox)
+Vue.use(RadioGroup)
+Vue.use(Radio)
+Vue.use(Input)
+Vue.use(Button)
+Vue.use(Row)
 
 
 
