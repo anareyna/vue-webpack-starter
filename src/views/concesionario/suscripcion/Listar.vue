@@ -19,7 +19,6 @@
 					template(scope='scope')
 						el-button(size='small', @click='handleEdit(scope.$index, scope.row)') Edit
 						el-button(size='small', type='danger', @click='handleDelete(scope.$index, scope.row)') Delete
-
 </template>
 
 <script type="text/javascript">	
