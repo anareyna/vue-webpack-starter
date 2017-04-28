@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 import { 
 	Breadcrumb, BreadcrumbItem, Table, TableColumn, Form, FormItem, 
-	Option, Col, CheckboxGroup, Checkbox, RadioGroup, Radio, Input, Button, Row} 
+	Option, Col, CheckboxGroup, Checkbox, RadioGroup, Radio, Input, Button, Row, Icon, Popover, Tag} 
 	from 'element-ui'
 
 import routes from './routes'
@@ -27,7 +27,9 @@ Vue.use(Radio)
 Vue.use(Input)
 Vue.use(Button)
 Vue.use(Row)
-
+Vue.use(Icon)
+Vue.use(Popover)
+Vue.use(Tag)
 
 
 const router = new VueRouter(routes)
