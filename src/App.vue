@@ -1,5 +1,11 @@
 <template lang="pug">
     #app
+        router-link(to="/")
+            el-button(type='warning') Mis Avisos
+        router-link(to="/concesionario/suscripcion/listar")
+            el-button(type='warning') Suscribirse
+        router-link(to="/")
+            el-button(type='warning') Utilidades
         router-view
 </template>
 
@@ -17,5 +23,9 @@
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+    
+    a{
+        margin: 0 5px;
+    }
 }
 </style>
