@@ -1,7 +1,8 @@
 <template>	
 	<div>
 		<h1>Avisos Activos</h1>		
-		
+		<img src="../../../static/img/bg.png">		
+
 		<!-- <breadcrumb :breadcrumb="BreadcrumbAvisosActivos"></breadcrumb> -->
 		<el-breadcrumb separator="/">
 		  <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>

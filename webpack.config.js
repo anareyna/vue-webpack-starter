@@ -11,10 +11,10 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
+        test    : /\.vue$/,
+        loader  : 'vue-loader',
+        options : {
+          loaders : {
               'stylus': 'vue-style-loader!css-loader!stylus-loader'
           }
           // other vue-loader options go here
@@ -30,15 +30,34 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-       test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
-       exclude: /favicon\.png$/,
-       use: [{
-         loader: 'url-loader',
-         options: {
-           limit: 10000
-         }
-       }]
-     }
+        test: /(fonts|img)\/.*\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
+        exclude: /favicon\.png$/,
+        use: [{
+           loader: 'url-loader',
+           options: {
+             limit: 10000
+           }
+         }]
+      },
+      {
+        test : /icons\/.*\.svg$/,
+        use  : [
+          {
+            loader: 'raw-loader'
+          },
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [
+                {removeTitle      : true},
+                {convertColors    : {shorthex : false}},
+                {convertPathData  : false},
+                {removeDimensions : true}
+              ]
+            }
+          }
+        ]
+      }
     ]
   },
   resolve: {
