@@ -3,6 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>vue-webpack-simple</title>
+    <script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+    <script>
+    	var config = {
+	      apiKey            : "AIzaSyCdosJberuChFRc61JMp83NarsDnJYIgFs",
+	      authDomain        : "vuejs-b7a6d.firebaseapp.com",
+	      databaseURL       : "https://vuejs-b7a6d.firebaseio.com",
+	      projectId         : "vuejs-b7a6d",
+	      storageBucket     : "vuejs-b7a6d.appspot.com",
+	      messagingSenderId : "1012190164024"
+	    };
+	    firebase.initializeApp(config);
+    </script>
   </head>
   <body>
     <div id="app"></div>

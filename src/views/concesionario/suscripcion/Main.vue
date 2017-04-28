@@ -1,0 +1,10 @@
+<template>
+    <main>
+        <h1>Suscripción:</h1>
+        <router-view></router-view>
+    </main>
+</template>
+
+<script type="text/javascript">
+  
+</script>
