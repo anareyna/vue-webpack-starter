@@ -1,0 +1,26 @@
+{
+  "persons": [
+    {
+      "id": "1",
+      "names": "Jhonnatan",
+      "lastname": "Castro",
+      "mail": "jjhoncv@gmail.com",
+      "sex": "Masculino",
+      "categories": [
+        "beauty",
+        "foods",
+        "travels"
+      ]
+    },
+    {
+      "id": "2",
+      "names": "Ana",
+      "lastname": "Reyna",
+      "mail": "ana@gmail.com",
+      "sex": "Femenino",
+      "categories": [
+        "beauty"
+      ]
+    }
+  ]
+}

@@ -28,6 +28,10 @@
 </template>
 
 <script type="text/javascript">	
+
+	import axios from 'axios'
+	let urlList 	 = 'http://localhost:3004/persons';
+
 	export default {
 		data() {
 	      return {
@@ -47,22 +51,38 @@
 	    methods: {
 	      onSubmit() {
 	        console.log('submit!');
-	        firebase.database().ref('/suscribe').push({
-             "categories" : {
-             	"beauty": this.form.categories.beauty,
-             	"foods": this.form.categories.foods, 
-             	"travels": this.form.categories.travels
-             },
-             "lastname"   : this.form.lastname,
-             "mail"       : this.form.email,
-             "names"      : this.form.name,
-             "sex"        : this.form.gender
-        	}).then(() => {
-        		console.log("victor")
-				firebase.database().ref('/suscribe').once('value').then(function(snapshot) {
-			    console.log("-list-", snapshot.val());
-			    });	
+	        
+	        axios.post(urlList, {
+						"id"         : Math.random().toString(36).substr(2, 9),
+						"categories" : {
+							"beauty"     : this.form.categories.beauty,
+							"foods"      : this.form.categories.foods,
+							"travels"    : this.form.categories.travels
+						},
+						"lastname"   : this.form.lastname,
+						"mail"       : this.form.email,
+						"names"      : this.form.name,
+						"sex"        : this.form.gender
         	})
+          .then((response)=>{					  
+          	//this.tableData = response.data;          	
+          })	
+	   //      firebase.database().ref('/suscribe').push({
+    //          "categories" : {
+    //          	"beauty": this.form.categories.beauty,
+    //          	"foods": this.form.categories.foods, 
+    //          	"travels": this.form.categories.travels
+    //          },
+    //          "lastname"   : this.form.lastname,
+    //          "mail"       : this.form.email,
+    //          "names"      : this.form.name,
+    //          "sex"        : this.form.gender
+    //     	}).then(() => {
+    //     		console.log("victor")
+				// firebase.database().ref('/suscribe').once('value').then(function(snapshot) {
+			 //    console.log("-list-", snapshot.val());
+			 //    });	
+    //     	})
 	      }
 	    }
 	  
