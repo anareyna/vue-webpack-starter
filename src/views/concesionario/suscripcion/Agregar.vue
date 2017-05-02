@@ -10,7 +10,7 @@
             el-input(v-model='frmAdd.lastname')
           el-form-item(label='Email', prop='email')
             el-input(v-model='frmAdd.email')
-          el-form-item(label='Categorías')
+          el-form-item(label='Categorías', prop='categories')
             el-checkbox-group(v-model='frmAdd.categories')
                 el-checkbox(label='Belleza')
                 el-checkbox(label='Comida')
@@ -28,6 +28,7 @@
 
 <script>
   import axios from 'axios'
+
   let urlList = 'http://172.18.60.50:3004/persons'
 
   export default {
@@ -49,6 +50,9 @@
             { required: true, message: 'Ingrese email', trigger: 'blur' },
             { type: 'email', message: 'Ingrese mail válido', trigger: 'blur' }
           ],
+          categories: [
+            { type: 'array', required: true, message: 'Selecciona al menos una categoría', trigger: 'change' }
+          ],
         }
       };
     },
@@ -56,7 +60,11 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            console.log('submit!')
+            this.$notify({
+              message: 'Usuario suscrito.',
+              type: 'success'
+            })
+            
             axios.post(urlList, {
               "id"         : Math.random().toString(36).substr(2, 9), 
               "names"      : this.frmAdd.name,
@@ -74,7 +82,7 @@
             })
           } else {
             console.log('error submit!!')
-            return false;
+            return false
           }
         });
       },
