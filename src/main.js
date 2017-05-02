@@ -3,14 +3,13 @@ import VueRouter from 'vue-router'
 
 import { 
 	Breadcrumb, BreadcrumbItem, Table, TableColumn, Form, FormItem, 
-	Option, Col, CheckboxGroup, Checkbox, RadioGroup, Radio, Input, Button, Row, Icon, Popover, Tag} 
+	Option, Col, CheckboxGroup, Checkbox, RadioGroup, Radio, Input, Button, Row, Icon, 
+    Popover, Tag, Notification} 
 	from 'element-ui'
 
 import routes from './routes'
 import App from './App.vue'
 
-//console.log("Breadcrumb element.io", Breadcrumb);
-//Vue.component(Breadcrumb.name, Breadcrumb)
 Vue.use(VueRouter)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
@@ -31,6 +30,7 @@ Vue.use(Icon)
 Vue.use(Popover)
 Vue.use(Tag)
 
+Vue.prototype.$notify = Notification
 
 const router = new VueRouter(routes)
 

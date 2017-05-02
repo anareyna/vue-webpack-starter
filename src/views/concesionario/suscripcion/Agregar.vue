@@ -28,6 +28,7 @@
 
 <script>
   import axios from 'axios'
+
   let urlList = 'http://172.18.60.50:3004/persons'
 
   export default {
@@ -56,7 +57,11 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            console.log('submit!')
+            this.$notify({
+              message: 'Usuario suscrito.',
+              type: 'success'
+            })
+            
             axios.post(urlList, {
               "id"         : Math.random().toString(36).substr(2, 9), 
               "names"      : this.frmAdd.name,
@@ -74,7 +79,7 @@
             })
           } else {
             console.log('error submit!!')
-            return false;
+            return false
           }
         });
       },
