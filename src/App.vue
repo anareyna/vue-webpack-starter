@@ -16,8 +16,10 @@
 </script>
 
 <style lang="stylus">
-#app {
+body
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    
+#app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
