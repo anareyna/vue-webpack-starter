@@ -2,10 +2,10 @@
     <main>
         <h1>Suscripción:</h1>
         <div class="btns">
-            <router-link to="listar" active-class="activo">
+            <router-link :to="{name:'listarSuscripcion'}" active-class="activo">
                 <el-button type='primary'>Listar</el-button>
             </router-link>
-            <router-link to="agregar" active-class="activo">
+            <router-link :to="{name:'agregarSuscripcion'}" active-class="activo">
                 <el-button type='success'>Agregar</el-button>
             </router-link>
         </div>

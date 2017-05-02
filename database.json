@@ -1,16 +1,12 @@
 {
   "persons": [
     {
-      "id": "1",
-      "names": "Jhonnatan",
-      "lastname": "Castro",
+      "categories": [],
+      "lastname": "Castro5",
       "mail": "jjhoncv@gmail.com",
+      "names": "Jhonnatan ss222",
       "sex": "Masculino",
-      "categories": [
-        "beauty",
-        "foods",
-        "travels"
-      ]
+      "id": "1"
     },
     {
       "id": "2",

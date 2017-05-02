@@ -17,7 +17,7 @@
 
 				el-table-column(label='Operations')
 					template(scope='scope')
-						router-link(:to=`"editar/" + scope.row.id`) Edit						
+						router-link(:to="{name:'editarSuscripcion', params: {id: scope.row.id}}") Edit						
 						el-button(size='small', type='danger', @click='handleDelete(scope.$index, scope.row)') Delete
 </template>
 
@@ -29,7 +29,7 @@
 	export default {
 			mounted(){				
 		  	 axios.get(urlList)
-          .then((response)=>{					  
+          .then((response) =>{
           	this.tableData = response.data;          	
           })		  	
 			},
