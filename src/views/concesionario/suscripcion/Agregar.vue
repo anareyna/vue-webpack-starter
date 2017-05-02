@@ -1,115 +1,86 @@
 <template lang="pug">
-	div
-		h2 Agregar Usuario
-		el-row(type='flex' justify="center") 
-			el-col(:span='8')
-				el-form(ref='form', :model='form', label-width='120px')
-					el-form-item(label='Nombres')
-						el-input(v-model='form.name')
-					el-form-item(label='Apellidos')
-						el-input(v-model='form.lastname')
-					el-form-item(label='Email')
-						el-input(v-model='form.email')
-					el-form-item(label='Categorías')
-						el-checkbox-group(v-model='form.categories.beauty')
-							el-checkbox(label='Belleza')
-						el-checkbox-group(v-model='form.categories.foods')
-							el-checkbox(label='Comida')
-						el-checkbox-group(v-model='form.categories.travels')
-							el-checkbox(label='Viajes')
-					el-form-item(label='Género')
-						el-radio-group(v-model='form.gender')
-							el-radio(label='Masculino')
-							el-radio(label='Femenino')
-					el-form-item
-						el-button(type='primary', @click='onSubmit') Agregar
-						el-button Cancelar
+  div 
+    h2 Agregar Usuario
+    el-row(type='flex' justify="center") 
+      el-col(:span='8')
+        el-form(:model='frmAdd', :rules='rules', ref='frmAdd', label-width='120px')
+          el-form-item(label='Nombres', prop='name')
+            el-input(v-model='frmAdd.name')
+          el-form-item(label='Apellidos')
+            el-input(v-model='frmAdd.lastname')
+          el-form-item(label='Email', prop='email')
+            el-input(v-model='frmAdd.email')
+          el-form-item(label='Categorías')
+            el-checkbox-group(v-model='frmAdd.categories')
+                el-checkbox(label='Belleza')
+                el-checkbox(label='Comida')
+                el-checkbox(label='Viajes')
+          el-form-item(label='Género')
+            el-radio-group(v-model='frmAdd.gender')
+                el-radio(label='Masculino')
+                el-radio(label='Femenino')
 
+          el-form-item
+            el-button(type='primary', @click="submitForm('frmAdd')") Agregar
+            el-button(@click="resetForm('frmAdd')") Reset
 </template>
 
-<script type="text/javascript">	
 
-	import axios from 'axios'
-	let urlList 	 = 'http://localhost:3004/persons';
+<script>
+  import axios from 'axios'
+  let urlList = 'http://172.18.60.50:3004/persons'
 
-	export default {
-		data() {
-	      return {
-	        form: {
-	          name: '',
-	          lastname: '',
-	          categories: {
-	          	"beauty": false,
-             	"foods": false, 
-             	"travels": false
-	          },
-	          email: '',
-	          gender: 'M'
-	        }
-	      }
-	    },
-	    methods: {
-	      onSubmit() {
-	        console.log('submit!');
-	        
-	        axios.post(urlList, {
-						"id"         : Math.random().toString(36).substr(2, 9),
-						"categories" : {
-							"beauty"     : this.form.categories.beauty,
-							"foods"      : this.form.categories.foods,
-							"travels"    : this.form.categories.travels
-						},
-						"lastname"   : this.form.lastname,
-						"mail"       : this.form.email,
-						"names"      : this.form.name,
-						"sex"        : this.form.gender
-        	})
-          .then((response)=>{					  
-          	//this.tableData = response.data;          	
-          })	
-	   //      firebase.database().ref('/suscribe').push({
-    //          "categories" : {
-    //          	"beauty": this.form.categories.beauty,
-    //          	"foods": this.form.categories.foods, 
-    //          	"travels": this.form.categories.travels
-    //          },
-    //          "lastname"   : this.form.lastname,
-    //          "mail"       : this.form.email,
-    //          "names"      : this.form.name,
-    //          "sex"        : this.form.gender
-    //     	}).then(() => {
-    //     		console.log("victor")
-				// firebase.database().ref('/suscribe').once('value').then(function(snapshot) {
-			 //    console.log("-list-", snapshot.val());
-			 //    });	
-    //     	})
-	      }
-	    }
-	  
-
-		//mounted(){			
-			// firebase.database().ref('/suscribe').push({
-			// 	 "categories" : {"beauty": true, "foods": false, "travels": false},
-			// 	 "lastname"   : "AAAAACastro Vivela  23423432",
-			// 	 "mail"       : "dfdsfjjcv@gmail.com",
-			// 	 "names"      : "dsfdsf sJulio Jhonnatan 1",
-			// 	 "sex"        : "M"
-			// }).then(()=>{
-			// 	console.log("victor")
-			// 	firebase.database().ref('/suscribe').once('value').then(function(snapshot) {
-		 //      console.log("-list-", snapshot.val());
-		 //    });	
-
-			// })
-
-					
-		//}
-	}
+  export default {
+    data() {
+      return {
+        frmAdd: {
+          name: '',
+          lastname: '',
+          categories: [],
+          email: '',
+          gender: ''
+        },
+        rules: {
+          name: [
+            { required: true, message: 'Ingrese nombre', trigger: 'blur' },
+            { min: 3, message: 'Minimo 3 caracteres', trigger: 'blur' }
+          ],
+          email: [
+            { required: true, message: 'Ingrese email', trigger: 'blur' },
+            { type: 'email', message: 'Ingrese mail válido', trigger: 'blur' }
+          ],
+        }
+      };
+    },
+    methods: {
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            console.log('submit!')
+            axios.post(urlList, {
+              "id"         : Math.random().toString(36).substr(2, 9), 
+              "names"      : this.frmAdd.name,
+              "lastname"   : this.frmAdd.lastname,
+              "categories" : [
+                  this.frmAdd.categories.beauty,
+                  this.frmAdd.categories.foods,
+                  this.frmAdd.categories.travels
+              ],
+              "mail"       : this.frmAdd.email,
+              "sex"        : this.frmAdd.gender
+            }).then((response) => {
+              console.log(response, 'response')
+              this.$router.push('listar')
+            })
+          } else {
+            console.log('error submit!!')
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      }
+    }
+  }
 </script>
-
-<style media="screen">
-	i{
-		width: 350px;
-		display: inline-block;
-	}
-</style>
