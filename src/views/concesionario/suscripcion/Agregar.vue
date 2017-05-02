@@ -10,7 +10,7 @@
             el-input(v-model='frmAdd.lastname')
           el-form-item(label='Email', prop='email')
             el-input(v-model='frmAdd.email')
-          el-form-item(label='Categorías')
+          el-form-item(label='Categorías', prop='categories')
             el-checkbox-group(v-model='frmAdd.categories')
                 el-checkbox(label='Belleza')
                 el-checkbox(label='Comida')
@@ -49,6 +49,9 @@
           email: [
             { required: true, message: 'Ingrese email', trigger: 'blur' },
             { type: 'email', message: 'Ingrese mail válido', trigger: 'blur' }
+          ],
+          categories: [
+            { type: 'array', required: true, message: 'Selecciona al menos una categoría', trigger: 'change' }
           ],
         }
       };
