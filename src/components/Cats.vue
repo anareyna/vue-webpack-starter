@@ -15,6 +15,7 @@
         padding 0
         
         li
-            display inline-block            
+            display inline-block
+            padding 0 5px
     
 </style>
