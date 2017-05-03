@@ -3,27 +3,24 @@
 		h2 Editar Usuario
 		el-row(type='flex' justify="center") 
 			el-col(:span='8')
-				el-form(ref='form', :model='form', label-width='120px')
-					el-form-item(label='Nombres')
-						el-input(v-model='form.name')
+				el-form(ref='frm', :rules='rules', :model='frm', label-width='120px')
+					el-form-item(label='Nombres' , prop='name')
+						el-input(v-model='frm.name')
 					el-form-item(label='Apellidos')
-						el-input(v-model='form.lastname')
-					el-form-item(label='Email')
-						el-input(v-model='form.email')
-					el-form-item(label='Categorías')
-						el-checkbox-group(v-model='form.categories.beauty')
-							el-checkbox(label='Belleza')
-						el-checkbox-group(v-model='form.categories.foods')
-							el-checkbox(label='Comida')
-						el-checkbox-group(v-model='form.categories.travels')
-							el-checkbox(label='Viajes')
+						el-input(v-model='frm.lastname')
+					el-form-item(label='Email' , prop='email')
+						el-input(v-model='frm.email')
+					el-form-item(label='Categorías' prop='categories')
+						el-checkbox-group(v-model='frm.categories')
+							el-checkbox(v-for="category in listCategories" ,:label="category.id" ,:key="category.id") {{category.name}}
 					el-form-item(label='Género')
-						el-radio-group(v-model='form.gender')
+						el-radio-group(v-model='frm.gender')
 							el-radio(label='Masculino')
 							el-radio(label='Femenino')
 					el-form-item
-						el-button(type='primary', @click='onSubmit') Actualizar
-						el-button Cancelar
+						el-button(type='primary', @click="onSubmit('frm')") Actualizar
+						router-link(:to="{name: 'listarSuscripcion'}")
+							el-button Cancelar						
 
 </template>
 
@@ -35,79 +32,65 @@
 
 	export default {
 		data() {
-	      return {
-	        form: {
-	          name: '',
-	          lastname: '',
-	          categories: {
-	          	"beauty": false,
-             	"foods": false, 
-             	"travels": false
-	          },
-	          email: '',
-	          gender: 'M'
+	      return {	        
+	        listCategories: [{name:"beauty", id:1}, {name:"foods", id:5}, {name:"travels", id:3}],
+	        frm: {
+	          categories : [],
+	          email      : '',
+	          gender     : '',
+	          lastname   : '',
+	          name       : ''
+	        },
+	        rules: {
+	          name: [
+	            { required: true, message: 'Ingrese nombre', trigger: 'blur' },
+	            { min: 3, message: 'Minimo 3 caracteres', trigger: 'blur' }
+	          ],
+	          email: [
+	            { required: true, message: 'Ingrese email', trigger: 'blur' },
+	            { type: 'email', message: 'Ingrese mail válido', trigger: 'blur' }
+	          ],
+	          categories: [
+	            { type: 'array', required: true, message: 'Selecciona al menos una categoría', trigger: 'change' }
+	          ]
 	        }
 	      }
 	    },
 	    methods: {
-	      onSubmit() {
-					let cats = []
-					for(let cat in this.form.categories){
-						if(cat.true){
-							cats.push(cat);
-						}
-					}
-					console.log("cats", cats);
-	      	//console.log(this.form.categories);        
-	        // Object.keys(this.form.categories).map()
-	        // for(let cat in this.form.categories){
-	        // 	console.log(cat);
-	        // }
-	        //console.log(this.form.categories);
-					axios.put(urlList+"/"+this.$route.params.id, {
-						"categories" : cats,
-						"lastname"   : this.form.lastname,
-						"mail"       : this.form.email,
-						"names"      : this.form.name,
-						"sex"        : this.form.gender
-					})
-      //     .then((response)=>{					  
-          	
-      //     })	
-	   //      firebase.database().ref('/suscribe').push({
-    //          "categories" : {
-    //          	"beauty": this.form.categories.beauty,
-    //          	"foods": this.form.categories.foods, 
-    //          	"travels": this.form.categories.travels
-    //          },
-    //          "lastname"   : this.form.lastname,
-    //          "mail"       : this.form.email,
-    //          "names"      : this.form.name,
-    //          "sex"        : this.form.gender
-    //     	}).then(() => {
-    //     		console.log("victor")
-				// firebase.database().ref('/suscribe').once('value').then(function(snapshot) {
-			 //    console.log("-list-", snapshot.val());
-			 //    });	
-    //     	})
+	      onSubmit(formName) {
+					this.$refs[formName].validate((valid) => {
+						if (valid) {
+							this.$notify({
+	              message: 'Usuario modificado.',
+	              type: 'success'
+	            })
+							axios.put(urlList+"/"+this.$route.params.id, {
+								"categories" : this.frm.categories,
+								"lastname"   : this.frm.lastname,
+								"mail"       : this.frm.email,
+								"names"      : this.frm.name,
+								"sex"        : this.frm.gender
+							}).then((response) => {
+	              console.log(response, 'response')
+	              this.$router.push({name:'listarSuscripcion'})
+	            })
+						} else {
+	            console.log('error submit!!')
+	            return false
+	          }
+					})					      
 	      }
 	    },
 	  
 
 		mounted(){
-
 			axios.get(urlList+"/"+this.$route.params.id)
 				.then((response) => {					
-					this.form.name       = response.data.names
-					this.form.email      = response.data.mail
-					this.form.gender     = response.data.sex
-					this.form.lastname   = response.data.lastname
-					let cats = response.data.categories;
-					let ocats = {}
-					for(let i in cats){
-						ocats[cats[i]] = true;
-					}					
-					this.form.categories = ocats;
+					this.frm.categories   = response.data.categories
+					this.frm.email        = response.data.mail
+					this.frm.gender       = response.data.sex
+					this.frm.lastname     = response.data.lastname
+					this.frm.name         = response.data.names
 				})		 
 		}
 	}

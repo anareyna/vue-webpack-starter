@@ -1,22 +1,58 @@
 {
   "persons": [
     {
-      "categories": [],
-      "lastname": "Castro5",
+      "categories": [
+        3,
+        1,
+        5
+      ],
+      "lastname": "Castro",
       "mail": "jjhoncv@gmail.com",
-      "names": "Jhonnatan ss222",
+      "names": "Jhonnatan",
       "sex": "Masculino",
       "id": "1"
     },
     {
-      "id": "2",
-      "names": "Ana",
+      "categories": [
+        1,
+        5
+      ],
       "lastname": "Reyna",
       "mail": "ana@gmail.com",
+      "names": "Ana",
       "sex": "Femenino",
+      "id": "2"
+    },
+    {
       "categories": [
-        "beauty"
-      ]
+        5,
+        3
+      ],
+      "lastname": "Morales",
+      "mail": "victor.morales@gmail.com",
+      "names": "Victor",
+      "sex": "Femenino",
+      "id": "262au4vqi"
+    },
+    {
+      "categories": [
+        3
+      ],
+      "lastname": "Castro",
+      "mail": "jhon.castro@gmail.com",
+      "names": "Jhon",
+      "sex": "Masculino",
+      "id": "aeq65e1yv"
+    },
+    {
+      "id": "hf9f91yfv",
+      "names": "asdasd",
+      "lastname": "asdas",
+      "categories": [
+        3
+      ],
+      "mail": "asdasd@asdasd.com",
+      "sex": "Masculino"
     }
   ]
 }

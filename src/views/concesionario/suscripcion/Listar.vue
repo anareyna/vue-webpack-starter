@@ -2,20 +2,22 @@
 	div
 		template
 			el-table(:data='tableData', style='width: 100%')
-				el-table-column(label="lastname" width='180')
+				el-table-column(label="Apellido" width='180')
 					template(scope="scope")
 						span {{  scope.row.lastname }}
-				el-table-column(label="mail" width='180')
+				el-table-column(label="e-mail" width='180')
 					template(scope="scope")
 						span {{ scope.row.mail }}
-				el-table-column(label="names" width='180')
+				el-table-column(label="Nombres" width='180')
 					template(scope="scope")
 						span {{ scope.row.names }}
-				el-table-column(label="sex" width='180')
+				el-table-column(label="Sexo" width='180')
 					template(scope="scope")
 						span {{ scope.row.sex }}	
-
-				el-table-column(label='Operations')
+				el-table-column(label="Categorias" width='180')
+					template(scope="scope")
+						span {{ scope.row.categories }}
+				el-table-column(label='Opciones')
 					template(scope='scope')
 						router-link(:to="{name:'editarSuscripcion', params: {id: scope.row.id}}") Edit						
 						el-button(size='small', type='danger', @click='handleDelete(scope.$index, scope.row)') Delete
@@ -35,6 +37,7 @@
 			},
 			data() {
 				return {
+					listCategories: [{name:"beauty", id:1}, {name:"foods", id:5}, {name:"travels", id:3}],
 					tableData: []	
 				}
 			},

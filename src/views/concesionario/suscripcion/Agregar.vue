@@ -3,41 +3,39 @@
     h2 Agregar Usuario
     el-row(type='flex' justify="center") 
       el-col(:span='8')
-        el-form(:model='frmAdd', :rules='rules', ref='frmAdd', label-width='120px')
+        el-form(:model='frm', :rules='rules', ref='frm', label-width='120px')
           el-form-item(label='Nombres', prop='name')
-            el-input(v-model='frmAdd.name')
+            el-input(v-model='frm.name')
           el-form-item(label='Apellidos')
-            el-input(v-model='frmAdd.lastname')
+            el-input(v-model='frm.lastname')
           el-form-item(label='Email', prop='email')
-            el-input(v-model='frmAdd.email')
+            el-input(v-model='frm.email')
           el-form-item(label='Categorías', prop='categories')
-            el-checkbox-group(v-model='frmAdd.categories')
-                el-checkbox(label='Belleza')
-                el-checkbox(label='Comida')
-                el-checkbox(label='Viajes')
+            el-checkbox-group(v-model='frm.categories')
+              el-checkbox(v-for="category in listCategories" ,:label="category.id", :key="category.id") {{category.name}}        
           el-form-item(label='Género')
-            el-radio-group(v-model='frmAdd.gender')
+            el-radio-group(v-model='frm.gender')
                 el-radio(label='Masculino')
                 el-radio(label='Femenino')
-
-          el-form-item
-            el-button(type='primary', @click="submitForm('frmAdd')") Agregar
-            el-button(@click="resetForm('frmAdd')") Reset
+          el-form-item           
+            el-button(type='primary', @click="submitForm('frm')") Agregar
+            el-button(@click="resetForm('frm')") Reset
 </template>
 
 
 <script>
   import axios from 'axios'
 
-  let urlList = 'http://172.18.60.50:3004/persons'
+  let urlList = 'http://172.18.60.50:3004/persons'  
 
   export default {
     data() {
-      return {
-        frmAdd: {
+      return {        
+        listCategories: [{name:"beauty", id:1}, {name:"foods", id:5}, {name:"travels", id:3}],
+        frm: {
           name: '',
           lastname: '',
-          categories: [],
+          categories : [],
           email: '',
           gender: ''
         },
@@ -52,12 +50,12 @@
           ],
           categories: [
             { type: 'array', required: true, message: 'Selecciona al menos una categoría', trigger: 'change' }
-          ],
+          ]
         }
       };
     },
     methods: {
-      submitForm(formName) {
+      submitForm(formName) {        
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.$notify({
@@ -67,18 +65,15 @@
             
             axios.post(urlList, {
               "id"         : Math.random().toString(36).substr(2, 9), 
-              "names"      : this.frmAdd.name,
-              "lastname"   : this.frmAdd.lastname,
-              "categories" : [
-                  this.frmAdd.categories.beauty,
-                  this.frmAdd.categories.foods,
-                  this.frmAdd.categories.travels
-              ],
-              "mail"       : this.frmAdd.email,
-              "sex"        : this.frmAdd.gender
+              "names"      : this.frm.name,
+              "lastname"   : this.frm.lastname,
+              "categories" : this.frm.categories,
+              "mail"       : this.frm.email,
+              "sex"        : this.frm.gender
+              
             }).then((response) => {
               console.log(response, 'response')
-              this.$router.push('listar')
+              this.$router.push({name:'listarSuscripcion'})
             })
           } else {
             console.log('error submit!!')
