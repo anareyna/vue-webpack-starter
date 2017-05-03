@@ -21,7 +21,6 @@
 						el-button(type='primary', @click="onSubmit('frm')") Actualizar
 						router-link(:to="{name: 'listarSuscripcion'}")
 							el-button Cancelar						
-
 </template>
 
 <script type="text/javascript">	

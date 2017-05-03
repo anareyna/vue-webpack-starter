@@ -1,8 +1,8 @@
-import Main from './Main.vue'
+import Main from 'views/concesionario/suscripcion/Main.vue'
 
-import Listar from './Listar.vue'
-import Agregar from './Agregar.vue'
-import Editar from './Editar.vue'
+import Listar from 'views/concesionario/suscripcion/Listar.vue'
+import Agregar from 'views/concesionario/suscripcion/Agregar.vue'
+import Editar from 'views/concesionario/suscripcion/Editar.vue'
 
 export default{
     path      : '/concesionario/suscripcion',
