@@ -1,3 +1,31 @@
+<<<<<<< Updated upstream
+<template lang="pug">   
+    div
+        template
+            el-table(:data='tableData', style='width: 100%')
+                el-table-column(label="Apellido" width='180')
+                    template(scope="scope")
+                        span {{  scope.row.lastname }}
+                el-table-column(label="e-mail" width='180')
+                    template(scope="scope")
+                        span {{ scope.row.mail }}
+                el-table-column(label="Nombres" width='180')
+                    template(scope="scope")
+                        span {{ scope.row.names }}
+                el-table-column(label="Sexo" width='180')
+                    template(scope="scope")
+                        span {{ scope.row.sex }}    
+                el-table-column(label="Categorias" width='180')
+                    template(scope="scope")
+                        span {{ scope.row.categories }}
+
+                el-table-column(label='Opciones')
+                    template(scope='scope')
+                        router-link(:to="{name:'editarSuscripcion', params: {id: scope.row.id}}") Edit                      
+                        el-button(size='small', type='danger', @click='handleDelete(scope.$index, scope.row.id )') Delete
+
+                
+=======
 <template lang="pug">	
 	div
 		template
@@ -22,6 +50,7 @@
 					template(scope='scope')
 						router-link(:to="{name:'editarSuscripcion', params: {id: scope.row.id}}") Edit						
 						el-button(size='small', type='danger', @click='handleDelete(scope.$index, scope.row)') Delete
+>>>>>>> Stashed changes
 </template>
 
 <script type="text/javascript">
@@ -32,6 +61,10 @@
 			components : {Cats},
 			mounted(){				
 		  	 this.$axios.get(this.urlServer)
+<<<<<<< Updated upstream
+          .then((response) =>{
+          	this.tableData = response.data;
+=======
           .then((response) => {
           	response.data = response.data.map((row)=>{ 
           		//console.log("row", row.categories);
@@ -39,6 +72,7 @@
           	});
           	//console.log(response.data);
           	this.tableData = response.data;          	
+>>>>>>> Stashed changes
           })		  	
 			},
 			props : ["listCategories", "urlServer"],
@@ -90,10 +124,9 @@
 			}					
 		}	
 </script>
-
 <style media="screen">
-	i{
-		width: 350px;
-		display: inline-block;
-	}
+    i{
+        width: 350px;
+        display: inline-block;
+    }
 </style>

@@ -1,0 +1,28 @@
+{
+<<<<<<< Updated upstream
+  "persons": [
+    {
+      "categories": [
+        5
+      ],
+      "lastname": "qweqweqwe",
+      "mail": "asdsdf@sdfsdf.com",
+      "names": "2222",
+      "sex": "",
+      "id": "gl9fw8p47"
+    },
+    {
+      "id": "mdcqt0lnh",
+      "names": "asdasd",
+      "lastname": "asdasd",
+      "categories": [
+        5
+      ],
+      "mail": "asdsd@asdas.com",
+      "sex": ""
+    }
+  ]
+=======
+  "persons": []
+>>>>>>> Stashed changes
+}
