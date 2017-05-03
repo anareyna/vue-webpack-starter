@@ -24,15 +24,10 @@
 </template>
 
 <script type="text/javascript">	
-
-	import axios from 'axios'	
-
-	let urlList 	 = 'http://localhost:3004/persons';
-
 	export default {
+		props : ["listCategories", "urlServer"],
 		data() {
 	      return {	        
-	        listCategories: [{name:"beauty", id:1}, {name:"foods", id:5}, {name:"travels", id:3}],
 	        frm: {
 	          categories : [],
 	          email      : '',
@@ -63,7 +58,7 @@
 	              message: 'Usuario modificado.',
 	              type: 'success'
 	            })
-							axios.put(urlList+"/"+this.$route.params.id, {
+							this.$axios.put(this.urlServer+"/"+this.$route.params.id, {
 								"categories" : this.frm.categories,
 								"lastname"   : this.frm.lastname,
 								"mail"       : this.frm.email,
@@ -83,7 +78,7 @@
 	  
 
 		mounted(){
-			axios.get(urlList+"/"+this.$route.params.id)
+			this.$axios.get(this.urlServer+"/"+this.$route.params.id)
 				.then((response) => {					
 					this.frm.categories   = response.data.categories
 					this.frm.email        = response.data.mail

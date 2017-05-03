@@ -1,58 +1,24 @@
 {
   "persons": [
     {
+      "id": "i91d19icl",
+      "names": "1111",
+      "lastname": "",
       "categories": [
-        3,
-        1,
         5
       ],
-      "lastname": "Castro",
-      "mail": "jjhoncv@gmail.com",
-      "names": "Jhonnatan",
-      "sex": "Masculino",
-      "id": "1"
-    },
-    {
-      "categories": [
-        1,
-        5
-      ],
-      "lastname": "Reyna",
-      "mail": "ana@gmail.com",
-      "names": "Ana",
-      "sex": "Femenino",
-      "id": "2"
-    },
-    {
-      "categories": [
-        5,
-        3
-      ],
-      "lastname": "Morales",
-      "mail": "victor.morales@gmail.com",
-      "names": "Victor",
-      "sex": "Femenino",
-      "id": "262au4vqi"
-    },
-    {
-      "categories": [
-        3
-      ],
-      "lastname": "Castro",
-      "mail": "jhon.castro@gmail.com",
-      "names": "Jhon",
-      "sex": "Masculino",
-      "id": "aeq65e1yv"
-    },
-    {
-      "id": "hf9f91yfv",
-      "names": "asdasd",
-      "lastname": "asdas",
-      "categories": [
-        3
-      ],
-      "mail": "asdasd@asdasd.com",
+      "mail": "sdfsdf@sdf.com",
       "sex": "Masculino"
+    },
+    {
+      "id": "gl9fw8p47",
+      "names": "2222",
+      "lastname": "",
+      "categories": [
+        5
+      ],
+      "mail": "asdsdf@sdfsdf.com",
+      "sex": ""
     }
   ]
 }

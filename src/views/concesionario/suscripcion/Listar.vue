@@ -24,20 +24,16 @@
 </template>
 
 <script type="text/javascript">	
-
-	import axios from 'axios'
-	let urlList 	 = 'http://172.18.60.50:3004/persons';
-	
 	export default {
 			mounted(){				
-		  	 axios.get(urlList)
+		  	 this.$axios.get(this.urlServer)
           .then((response) =>{
           	this.tableData = response.data;          	
           })		  	
 			},
+			props : ["listCategories", "urlServer"],
 			data() {
-				return {
-					listCategories: [{name:"beauty", id:1}, {name:"foods", id:5}, {name:"travels", id:3}],
+				return {					
 					tableData: []	
 				}
 			},

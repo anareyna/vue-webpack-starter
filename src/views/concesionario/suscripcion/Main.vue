@@ -9,11 +9,19 @@
                 <el-button type='success'>Agregar</el-button>
             </router-link>
         </div>
-        <router-view></router-view>
+        <router-view :listCategories="listCategories" :urlServer="urlServer"></router-view>
     </main>
 </template>
 
 <script type="text/javascript">
+    export default {
+        data() {
+            return {
+                urlServer      : 'http://172.18.60.50:3004/persons',            
+                listCategories : [{name:"beauty", id:1}, {name:"foods", id:5}, {name:"travels", id:3}]
+            }
+        }
+    }
 </script>
 
 <style media="screen">
