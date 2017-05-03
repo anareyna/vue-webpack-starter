@@ -1,12 +1,5 @@
 <template lang="pug">   
-    div        
-        el-popover(ref='popover1', placement='top-start', title='Title', width='200')
-            div 
-                p ¿Seguro que deseas eliminar?
-                    el-button(size="mini", type="text", @click="visiblePopup = false") Cancelar
-                    el-button(size="mini", type="primary", @click="visiblePopup = false") Confirmar
-        el-button(v-popover:popover1="") test
-
+    div              
         template
             el-table(:data='tableData', style='width: 100%')
                 el-table-column(label="Apellido" width='180')
@@ -49,7 +42,6 @@
                 return {
                     listCategories: [{name:"beauty", id:1}, {name:"foods", id:5}, {name:"travels", id:3}],
                     tableData: [],
-                    visiblePopup: false
                 }
             },
             methods: {
@@ -62,10 +54,27 @@
                 handleDelete(index, rows) {
                     console.log(index, rows);
 
-                    axios.delete(urlList + "/" + rows[0].id).then((response) => {
+                    this.$confirm('Seguro que quiere eliminar?', 'Warning', {
+                      cancelButtonText: 'Cancelar',
+                      confirmButtonText: 'Eliminar',
+                      type: 'warning'
+                    }).then(() => {
+                      axios.delete(urlList + "/" + rows[0].id).then((response) => {
                         this.$router.push({ name:'listarSuscripcion' })
                         rows.splice(index, 1)
-                    })
+                      })
+
+                      this.$notify({
+                        message: 'Se eliminó usuario.',
+                        type: 'success'
+                      })
+                    }).catch(() => {
+                      /*this.$message({
+                        type: 'info',
+                        message: 'Operación cancelada'
+                      }); */         
+                    });
+                    
                 }
             }                   
         }   

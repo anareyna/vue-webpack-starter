@@ -5,10 +5,13 @@ import {
     Checkbox, 
     CheckboxGroup, 
     Col, 
+    Dialog, 
     Form, 
     FormItem, 
     Icon, 
     Input, 
+    Message,
+    MessageBox,
     Notification,
     Option, 
     Popover, 
@@ -28,6 +31,7 @@ export default{
         Vue.use(Checkbox)
         Vue.use(CheckboxGroup)
         Vue.use(Col)
+        Vue.use(Dialog)
         Vue.use(Form)
         Vue.use(FormItem)
         Vue.use(Icon)
@@ -42,5 +46,8 @@ export default{
         Vue.use(Tag)
 
         Vue.prototype.$notify = Notification
+        Vue.prototype.$msgbox = MessageBox
+        Vue.prototype.$message = Message
+        Vue.prototype.$confirm = MessageBox.confirm
     }
 }
