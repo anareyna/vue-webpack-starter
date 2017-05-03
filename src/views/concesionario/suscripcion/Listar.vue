@@ -33,10 +33,10 @@
 			mounted(){				
 		  	 this.$axios.get(this.urlServer)
           .then((response) => {
-          	response.data = response.data.map((row)=>{ 
-          		//console.log("row", row.categories);
-          		console.log(this.formatCategories(row.categories)); 
-          	});
+          	// response.data = response.data.map((row)=>{ 
+          	// 	//console.log("row", row.categories);
+          	// 	console.log(this.formatCategories(row.categories)); 
+          	// });
           	//console.log(response.data);
           	this.tableData = response.data;          	
           })		  	
@@ -52,12 +52,13 @@
 					let names = [];
 					for(let cat in this.listCategories){
 						for(let id in ids){
-							if (this.listCategories[cat].id == id){
-								names.push(this.listCategories[cat].name)
-							}
+							console.log("id", ids[id]);
+              // if (this.listCategories[cat].id == id){
+							// 	names.push(this.listCategories[cat].name)
+							// }
 						}
 					}
-					return names;
+					//return names;
 					
 					// let aa = ids.map((id)=>{
 					// 	//console.log(id);
