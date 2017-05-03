@@ -1,11 +1,11 @@
 <template lang="pug">
     #app
         router-link(to="/")
-            el-button(type='warning') Mis Avisos
+            el-button(type='warning') Home
         router-link(to="/concesionario/suscripcion/listar")
             el-button(type='warning') Suscribirse
         router-link(to="/")
-            el-button(type='warning') Utilidades
+            el-button(type='warning') Mis Avisos
         router-view
 </template>
 
