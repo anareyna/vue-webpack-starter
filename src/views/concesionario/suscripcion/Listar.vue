@@ -1,27 +1,29 @@
 <template lang="pug">   
-    div              
-        template
-            el-table(:data='tableData', style='width: 100%')
-                el-table-column(label="Apellido" width='180')
-                    template(scope="scope")
-                        span {{  scope.row.lastname }}
-                el-table-column(label="e-mail" width='180')
-                    template(scope="scope")
-                        span {{ scope.row.mail }}
-                el-table-column(label="Nombres" width='180')
-                    template(scope="scope")
-                        span {{ scope.row.names }}
-                el-table-column(label="Sexo" width='180')
-                    template(scope="scope")
-                        span {{ scope.row.sex }}    
-                el-table-column(label="Categorias" width='180')
-                    template(scope="scope")
-                        span {{ scope.row.categories }}
-                
-                el-table-column(label='Opciones')
-                    template(scope='scope')
-                        router-link(:to="{name:'editarSuscripcion', params: {id: scope.row.id}}") Edit                      
-                        el-button(size='small', type='danger', @click='handleDelete(scope.$index, tableData)') Delete
+    div
+      pre(style="text-align:left") {{ tableData }}
+
+      template
+          el-table(:data='tableData', style='width: 100%')
+              el-table-column(label="Apellido" width='180')
+                  template(scope="scope")
+                      span {{  scope.row.lastname }}
+              el-table-column(label="e-mail" width='180')
+                  template(scope="scope")
+                      span {{ scope.row.mail }}
+              el-table-column(label="Nombres" width='180')
+                  template(scope="scope")
+                      span {{ scope.row.names }}
+              el-table-column(label="Sexo" width='180')
+                  template(scope="scope")
+                      span {{ scope.row.sex }}    
+              el-table-column(label="Categorias" width='180')
+                  template(scope="scope")
+                      span {{ scope.row.categories }}
+              
+              el-table-column(label='Opciones')
+                  template(scope='scope')
+                      router-link(:to="{name:'editarSuscripcion', params: {id: scope.row.id}}") Edit                      
+                      el-button(size='small', type='danger', @click='handleDelete(scope.$index, scope.row.id )') Delete
 
                 
 </template>
@@ -51,28 +53,23 @@
                 loadData(data){
                     console.log("asas", data)
                 },
-                handleDelete(index, rows) {
-                    console.log(index, rows);
+                handleDelete(index, id) {
+                    console.log(index, id);
 
                     this.$confirm('Seguro que quiere eliminar?', 'Warning', {
                       cancelButtonText: 'Cancelar',
                       confirmButtonText: 'Eliminar',
                       type: 'warning'
                     }).then(() => {
-                      axios.delete(urlList + "/" + rows[0].id).then((response) => {
-                        this.$router.push({ name:'listarSuscripcion' })
-                        rows.splice(index, 1)
+                      axios.delete(urlList + "/" + id).then((response) => {
+                        this.tableData.splice(index, 1)
                       })
-
                       this.$notify({
                         message: 'Se eliminó usuario.',
                         type: 'success'
                       })
                     }).catch(() => {
-                      /*this.$message({
-                        type: 'info',
-                        message: 'Operación cancelada'
-                      }); */         
+                            
                     });
                     
                 }
