@@ -3,7 +3,7 @@
     h2 Agregar Usuario
     el-row(type='flex' justify="center") 
       el-col(:span='8')
-        el-form(:model='frm', :rules='rules', ref='frm', label-width='120px')
+        el-form(:model='frm', :rules='rules', ref='frm', label-width='120px', @submit.prevent.native="submitForm('frm')")
           el-form-item(label='Nombres', prop='name')
             el-input(v-model='frm.name')
           el-form-item(label='Apellidos')
@@ -12,13 +12,13 @@
             el-input(v-model='frm.email')
           el-form-item(label='Categorías', prop='categories')
             el-checkbox-group(v-model='frm.categories')
-              el-checkbox(v-for="category in listCategories" ,:label="category.id", :key="category.id") {{category.name}}        
+              el-checkbox(v-for="category in listCategories" ,:label="category.id", :key="category.id") {{category.name}}
           el-form-item(label='Género')
             el-radio-group(v-model='frm.gender')
                 el-radio(label='Masculino')
                 el-radio(label='Femenino')
           el-form-item           
-            el-button(type='primary', @click="submitForm('frm')") Agregar
+            el-button(type='primary', native-type="submit") Agregar
             el-button(@click="resetForm('frm')") Reset            
 </template>
 

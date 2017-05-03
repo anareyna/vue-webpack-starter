@@ -3,7 +3,7 @@
 		h2 Editar Usuario
 		el-row(type='flex' justify="center") 
 			el-col(:span='8')
-				el-form(ref='frm', :rules='rules', :model='frm', label-width='120px')
+				el-form(ref='frm', :rules='rules', :model='frm', label-width='120px' @submit.prevent.native="submitForm('frm')")
 					el-form-item(label='Nombres' , prop='name')
 						el-input(v-model='frm.name')
 					el-form-item(label='Apellidos')
@@ -18,7 +18,7 @@
 							el-radio(label='Masculino')
 							el-radio(label='Femenino')
 					el-form-item
-						el-button(type='primary', @click="onSubmit('frm')") Actualizar
+						el-button(type='primary', native-type="submit") Actualizar
 						router-link(:to="{name: 'listarSuscripcion'}")
 							el-button Cancelar						
 </template>
@@ -51,7 +51,7 @@
 	      }
 	    },
 	    methods: {
-	      onSubmit(formName) {
+	      submitForm(formName) {
 					this.$refs[formName].validate((valid) => {
 						if (valid) {
 							this.$notify({
