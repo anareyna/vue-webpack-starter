@@ -20,7 +20,7 @@
 				el-table-column(label='Opciones')
 					template(scope='scope')
 						router-link(:to="{name:'editarSuscripcion', params: {id: scope.row.id}}") Edit						
-						el-button(size='small', type='danger', @click='handleDelete(scope.$index, scope.row)') Delete
+						el-button(size='small', type='danger', @click='handleDelete(scope.$index, tableData)') Delete
 </template>
 
 <script type="text/javascript">	
@@ -31,9 +31,9 @@
 	export default {
 			mounted(){				
 		  	 axios.get(urlList)
-          .then((response) =>{
-          	this.tableData = response.data;          	
-          })		  	
+                .then((response) => {
+          	     this.tableData = response.data;          	
+                })		  	
 			},
 			data() {
 				return {
@@ -48,8 +48,13 @@
 				loadData(data){
 					console.log("asas", data)
 				},
-				handleDelete(index, row) {
-					console.log(index, row);
+				handleDelete(index, rows) {
+                    console.log(index, rows);
+
+                    axios.delete(urlList + "/" + rows[0].id).then((response) => {
+                        this.$router.push({ name:'listarSuscripcion' })
+                        rows.splice(index, 1)
+                    })
 				}
 			}					
 		}	
