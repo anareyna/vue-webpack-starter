@@ -2,7 +2,7 @@
     #app
         router-link(to="/")
             el-button(type='warning') Home
-        router-link(to="/concesionario/suscripcion/listar")
+        router-link(:to="{name:'listarSuscripcion'}")
             el-button(type='warning') Suscribirse
         router-link(to="/")
             el-button(type='warning') Mis Avisos
