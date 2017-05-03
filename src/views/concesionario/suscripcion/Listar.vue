@@ -1,7 +1,5 @@
 <template lang="pug">   
     div
-      pre(style="text-align:left") {{ tableData }}
-
       template
           el-table(:data='tableData', style='width: 100%')
               el-table-column(label="Apellido" width='180')
