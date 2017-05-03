@@ -6,11 +6,11 @@
 </template>
 
 <script type="text/javascript">
-    import icon from './../static/icons/index.js'
+    import icon from 'static/icons/index.js'
 
     export default {
-        props   : ['name'],
-        methods :{
+        props    : ['name'],
+        methods  :{
             getContent(){
                 return icon[this.name];
             },

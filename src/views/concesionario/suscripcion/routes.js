@@ -7,6 +7,8 @@ import Editar from './Editar.vue'
 export default{
     path      : '/concesionario/suscripcion',
     component : Main,
+    redirect  : {name: 'listarSuscripcion'},
+    
     children  : [{
         path      : 'listar',
         component : Listar,
@@ -21,4 +23,3 @@ export default{
         name      : 'editarSuscripcion'
     }]
 }
-
