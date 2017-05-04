@@ -22,7 +22,7 @@
                     el-button(size='small', type='primary', icon="edit" @click='handleEdit(scope.row.id)') Editar                        
                     el-button(size='small', type='danger',icon="delete" @click='handleDelete(scope.$index, scope.row.id)') Delete
                     el-button(size='small', type='info',icon="view" @click='handleView(scope.$index, scope.row.id)') View
-		.block
+        .block
             el-pagination(
                 layout="prev, pager, next",
                 :total="totalPage",
@@ -50,7 +50,7 @@
         mounted(){
             this.getdata()
         },
-        methods: {
+        methods: {           
             getdata(){
                 this.$axios.get(this.urlServer).then((response) => {
                     this.totalPage = response.data.length
