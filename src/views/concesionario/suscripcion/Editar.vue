@@ -91,8 +91,4 @@
 </script>
 
 <style media="screen">
-    i{
-        width: 350px;
-        display: inline-block;
-    }
 </style>
