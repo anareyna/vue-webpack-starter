@@ -53,12 +53,7 @@
         methods: {
             submitForm(formName) {        
                 this.$refs[formName].validate((valid) => {
-                    if (valid) {
-                        this.$notify({
-                            message: 'Usuario suscrito.',
-                            type: 'success'
-                        })
-                        
+                    if (valid) {                        
                         this.$axios.post(this.urlServer, {
                             "id"         : Math.random().toString(36).substr(2, 9), 
                             "names"      : this.frm.name,
@@ -67,9 +62,12 @@
                             "mail"       : this.frm.email,
                             "sex"        : this.frm.gender
                             
-                        }).then((response) => {
-                            console.log(response, 'response')
+                        }).then((response) => {                            
                             this.$router.push({name:'listarSuscripcion'})
+                            this.$notify({
+                                message : 'Usuario suscrito.',
+                                type    : 'success'
+                            })
                         })
                     } else {
                         console.log('error submit!!')

@@ -51,32 +51,29 @@
           }
         },
         methods: {
-          submitForm(formName) {
-                    this.$refs[formName].validate((valid) => {
-                        if (valid) {
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {                            
+                        this.$axios.put(this.urlServer+"/"+this.$route.params.id, {
+                            "categories" : this.frm.categories,
+                            "lastname"   : this.frm.lastname,
+                            "mail"       : this.frm.email,
+                            "names"      : this.frm.name,
+                            "sex"        : this.frm.gender
+                        }).then((response) => {
                             this.$notify({
-                  message: 'Usuario modificado.',
-                  type: 'success'
+                              message : 'Usuario modificado.',
+                              type    : 'success'
+                            })
+                            this.$router.push({name:'listarSuscripcion'})
+                        })
+                    } else {
+                        console.log('error submit!!')
+                        return false
+                    }
                 })
-                            this.$axios.put(this.urlServer+"/"+this.$route.params.id, {
-                                "categories" : this.frm.categories,
-                                "lastname"   : this.frm.lastname,
-                                "mail"       : this.frm.email,
-                                "names"      : this.frm.name,
-                                "sex"        : this.frm.gender
-                            }).then((response) => {
-                  console.log(response, 'response')
-                  this.$router.push({name:'listarSuscripcion'})
-                })
-                        } else {
-                console.log('error submit!!')
-                return false
-              }
-                    })					      
-          }
+            }
         },
-      
-
         mounted(){
             this.$axios.get(this.urlServer+"/"+this.$route.params.id)
                 .then((response) => {					

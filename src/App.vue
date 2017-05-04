@@ -1,11 +1,12 @@
 <template lang="pug">
     #app
-        router-link(to="/")
-            el-button(type='warning') Home
-        router-link(:to="{name:'listarSuscripcion'}")
-            el-button(type='warning') Suscribirse
-        router-link(to="/")
-            el-button(type='warning') Mis Avisos
+        header
+            router-link(to="/")
+                el-button(type='warning') Home                    
+            router-link(:to="{name:'listarSuscripcion'}")
+                el-button(type='warning') Suscribirse
+            router-link(to="/")
+                el-button(type='warning') Mis Avisos
         router-view
 </template>
 
@@ -25,9 +26,17 @@ body
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
-    
-    a{
-        margin: 0 5px;
-    }
 }
+
+header
+    a
+        display inline-block
+        margin 0 5px
+
+.container
+    h2
+        text-align center
+
+        
+        
 </style>

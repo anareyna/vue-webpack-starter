@@ -1,16 +1,6 @@
 {
   "persons": [
     {
-      "categories": [
-        5
-      ],
-      "lastname": "qweqweqwe",
-      "mail": "asdsdf@sdfsdf.com",
-      "names": "2222",
-      "sex": "",
-      "id": "gl9fw8p47"
-    },
-    {
       "id": "mdcqt0lnh",
       "names": "asdasd",
       "lastname": "asdasd",
@@ -68,17 +58,6 @@
         3
       ],
       "mail": "nugecuzig@gmail.com",
-      "sex": ""
-    },
-    {
-      "id": "w7kzr72v7",
-      "names": "Qui quia sed amet dolores quidem",
-      "lastname": "In qui molestiae beatae deserunt est qui quis libero ullamco quaerat tempora",
-      "categories": [
-        1,
-        5
-      ],
-      "mail": "wadoxubyh@gmail.com",
       "sex": ""
     },
     {
@@ -204,17 +183,6 @@
       "sex": ""
     },
     {
-      "id": "373hs5ldy",
-      "names": "Eiusmod sit et illum est consequat Qui",
-      "lastname": "Vero aut dolor harum cum itaque laudantium laboris inventore",
-      "categories": [
-        3,
-        5
-      ],
-      "mail": "giza@yahoo.com",
-      "sex": ""
-    },
-    {
       "id": "iloxpsgjj",
       "names": "A esse exercitationem veritatis aut iusto quia nihil velit voluptatem in sunt rem",
       "lastname": "Do in id quasi quibusdam voluptatum quos sunt et quos",
@@ -324,16 +292,6 @@
         3
       ],
       "mail": "vexesekas@hotmail.com",
-      "sex": ""
-    },
-    {
-      "id": "jbu5wksly",
-      "names": "Voluptatem in voluptate est lorem magni veritatis",
-      "lastname": "In voluptatum nulla duis in labore molestiae omnis quibusdam velit exercitationem magni eligendi",
-      "categories": [
-        3
-      ],
-      "mail": "qasowo@gmail.com",
       "sex": ""
     }
   ]
