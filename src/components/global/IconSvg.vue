@@ -21,7 +21,7 @@
     }
 </script>
 
-<style media="screen">
+<style media="screen" scoped>
     i{
         width: 350px;
         display: inline-block;

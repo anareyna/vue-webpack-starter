@@ -20,7 +20,8 @@ import {
     Row, 
     Table, 
     TableColumn, 
-    Tag, 
+    Tag,
+    Pagination,
 } from 'element-ui'
 
 export default{
@@ -44,6 +45,7 @@ export default{
         Vue.use(Table)
         Vue.use(TableColumn)
         Vue.use(Tag)
+        Vue.use(Pagination)
 
         Vue.prototype.$notify = Notification
         Vue.prototype.$msgbox = MessageBox
