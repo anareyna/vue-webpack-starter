@@ -23,8 +23,14 @@ import {
     Tag, 
 } from 'element-ui'
 
+
+import lang from 'element-ui/lib/locale/lang/es'
+import locale from 'element-ui/lib/locale'
+
 export default{
     init(Vue){
+        locale.use(lang)
+
         Vue.use(Breadcrumb)
         Vue.use(BreadcrumbItem)
         Vue.use(Button)
