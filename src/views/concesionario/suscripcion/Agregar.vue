@@ -79,5 +79,5 @@
                 this.$refs[formName].resetFields();
             }
         }
-    }
+    };
 </script>
