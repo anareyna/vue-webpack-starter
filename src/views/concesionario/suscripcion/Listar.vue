@@ -5,7 +5,7 @@
                 layout="prev, pager, next",
                 :total="totalPage",
                 :page-size="pageSize",
-                @current-change="handleChangePage",
+                @current-change="onChangePage",
                 :current-page="currentPage"
                 )
         el-table(:data='tableData' v-loading="loading")
@@ -27,15 +27,15 @@
                         cats(:data="scope.row.categories")
             el-table-column(label='Opciones' width="220")
                 template(scope='scope')                    
-                    el-button(size='small', type='primary', icon="edit" @click='handleEdit(scope.row.id)') Editar                        
-                    el-button(size='small', type='danger',icon="delete" @click='handleDelete(scope.$index, scope.row.id)') Delete
+                    el-button(size='small', type='primary', icon="edit" @click='onEdit(scope.row.id)') Editar                        
+                    el-button(size='small', type='danger',icon="delete" @click='onDelete(scope.$index, scope.row.id)') Delete
                     el-button(size='small', type='info',icon="view" @click='onViewInfo(scope.row)') View
         .block
             el-pagination(
                 layout="prev, pager, next",
                 :total="totalPage",
                 :page-size="pageSize",
-                @current-change="handleChangePage",
+                @current-change="onChangePage",
                 :current-page="currentPage"
                 )
         el-dialog(title="Suscripción" v-model="dialogViewInfo" size="tiny")
@@ -86,14 +86,39 @@
             this.getdata()
         },
         methods: {
-            handleClose(){
-                this.$confirm('Are you sure to close this dialog?') .then(_ => {
-                    done();
-                }).catch(_ => {});
+            onEdit(id){
+                this.$router.push({ name: 'editarSuscripcion', params: { id: id }})
+            },
+            onDelete(index, id) {
+                this.$confirm('Seguro que quiere eliminar?', 'Eliminar Suscripción', {
+                    cancelButtonText : 'Cancelar',
+                    confirmButtonText: 'Eliminar',
+                    type             : 'warning'
+                }).then(() => {
+                    this.$axios.delete(this.urlServer + "/" + id).then((response) => {
+                        this.tableData.splice(index, 1)
+                        if (this.currentPage * this.pageSize > this.totalPage-1 && this.currentPage - 1 * this.pageSize == this.totalPage-1) {
+                            this.currentPage--
+                        }
+                        else{
+                            this.getdata()
+                        }
+                    })
+                    this.$notify({
+                        message: 'Se eliminó usuario.',
+                        type   : 'success'
+                    })
+                }).catch(() => {
+                                
+                });
             },
             onViewInfo(row){
                 this.dialogViewInfoData = row
                 this.dialogViewInfo     = true
+            },
+            onChangePage(currentPage){
+                this.currentPage = currentPage
+                this.getdata()
             },
             getdata(){
                 this.loading = true
@@ -119,34 +144,7 @@
                 }         
                 return names;
             },
-            handleDelete(index, id) {
-                this.$confirm('Seguro que quiere eliminar?', 'Warning', {
-                    cancelButtonText : 'Cancelar',
-                    confirmButtonText: 'Eliminar',
-                    type             : 'warning'
-                }).then(() => {
-                    this.$axios.delete(this.urlServer + "/" + id).then((response) => {
-                        this.tableData.splice(index, 1)
-                        if (this.currentPage * this.pageSize > this.totalPage-1 && this.currentPage - 1 * this.pageSize == this.totalPage-1) {
-                            this.currentPage--
-                        }
-                        else{
-                            this.getdata()
-                        }
-                    })
-                    this.$notify({
-                        message: 'Se eliminó usuario.',
-                        type: 'success'
-                    })
-                }).catch(() => {
-                                
-                });
-            },
-            handleChangePage(currentPage){
-                this.currentPage = currentPage
-                this.getdata()
-            }
-        }         
+        }
     } 
 </script>
 
