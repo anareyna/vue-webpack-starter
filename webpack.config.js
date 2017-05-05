@@ -29,11 +29,11 @@ module.exports = {
                 exclude: /node_modules/
             },
 
-            {
+            /*{
                 test: /\.(js|vue)$/,
                 loaders : ['eslint-loader'],
                 exclude: /node_modules/
-            },
+            },*/
             {
                 test   : /(fonts|img)\/.*\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
                 exclude: /favicon\.png$/,

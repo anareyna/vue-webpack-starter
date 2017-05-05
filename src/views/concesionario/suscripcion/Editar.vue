@@ -23,17 +23,17 @@
                             el-button Cancelar						
 </template>
 
-<script type="text/javascript">	
+<script type="text/javascript">
     export default {
-        props : ["listCategories", "urlServer"],
+        props : ['listCategories', 'urlServer'],
         data() {
-          return {	        
+          return {
             frm: {
-              categories : [],
-              email      : '',
-              gender     : '',
-              lastname   : '',
-              name       : ''
+              categories: [],
+              email: '',
+              gender: '',
+              lastname: '',
+              name: '',
             },
             rules: {
               name: [
@@ -84,7 +84,7 @@
                     this.frm.name         = response.data.names
                 })		 
         }
-    }
+    };
 </script>
 
 <style media="screen">
