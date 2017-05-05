@@ -10,6 +10,7 @@ import {
     FormItem, 
     Icon, 
     Input, 
+    Loading,
     Message,
     MessageBox,
     Notification,
@@ -43,6 +44,7 @@ export default{
         Vue.use(FormItem)
         Vue.use(Icon)
         Vue.use(Input)
+        Vue.use(Loading.directive)
         Vue.use(Option)
         Vue.use(Popover)
         Vue.use(Radio)

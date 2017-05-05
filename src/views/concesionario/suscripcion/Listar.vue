@@ -1,6 +1,14 @@
 <template lang="pug"> 
-    div        
-        el-table(:data='tableData')
+    div
+        .block
+            el-pagination(
+                layout="prev, pager, next",
+                :total="totalPage",
+                :page-size="pageSize",
+                @current-change="handleChangePage",
+                :current-page="currentPage"
+                )
+        el-table(:data='tableData' v-loading="loading")
             el-table-column(label="e-mail")
                 template(scope="scope")
                     span {{ scope.row.mail }}
@@ -21,7 +29,7 @@
                 template(scope='scope')                    
                     el-button(size='small', type='primary', icon="edit" @click='handleEdit(scope.row.id)') Editar                        
                     el-button(size='small', type='danger',icon="delete" @click='handleDelete(scope.$index, scope.row.id)') Delete
-                    el-button(size='small', type='info',icon="view" @click='handleView(scope.$index, scope.row.id)') View
+                    el-button(size='small', type='info',icon="view" @click='onViewInfo(scope.row)') View
         .block
             el-pagination(
                 layout="prev, pager, next",
@@ -30,6 +38,30 @@
                 @current-change="handleChangePage",
                 :current-page="currentPage"
                 )
+        el-dialog(title="Suscripción" v-model="dialogViewInfo" size="tiny")
+            el-row(:gutter="10")
+                el-col(:span="6")
+                    .grid-content.bg-purple Nombres
+                el-col(:span="18")
+                    .grid-content.bg-purple-light {{dialogViewInfoData.names}}
+            el-row(:gutter="10")
+                el-col(:span="6")
+                    .grid-content.bg-purple Apellifos
+                el-col(:span="18")
+                    .grid-content.bg-purple-light {{dialogViewInfoData.lastname}}
+            el-row(:gutter="10")
+                el-col(:span="6")
+                    .grid-content.bg-purple Email
+                el-col(:span="18")
+                    .grid-content.bg-purple-light {{dialogViewInfoData.mail}}
+            el-row(:gutter="10")
+                el-col(:span="6")
+                    .grid-content.bg-purple Categorias
+                el-col(:span="18")
+                    .grid-content.bg-purple-light
+                        cats(:data="dialogViewInfoData.categories")
+            span(slot="footer", class="dialog-footer")
+                el-button(@click="dialogViewInfo = false") Cerrar
 </template>
 
 <script type="text/javascript">
@@ -41,30 +73,42 @@
         props      : ["listCategories", "urlServer"],
         data() {
             return {
-                tableData  : [],
-                totalPage  : 0,
-                pageSize   : 10,
-                currentPage: 1
+                tableData          : [],
+                totalPage          : 0,
+                pageSize           : 10,
+                currentPage        : 1,
+                loading            : true,
+                dialogViewInfo     : false,
+                dialogViewInfoData : {}
             }
         },
         mounted(){
             this.getdata()
         },
-        methods: {           
+        methods: {
+            handleClose(){
+                this.$confirm('Are you sure to close this dialog?') .then(_ => {
+                    done();
+                }).catch(_ => {});
+            },
+            onViewInfo(row){
+                this.dialogViewInfoData = row
+                this.dialogViewInfo     = true
+            },
             getdata(){
-                this.$axios.get(this.urlServer).then((response) => {
-                    this.totalPage = response.data.length
-                    
-                    let data = response.data.filter((row, index) => {
-                        if ( (this.currentPage-1) * this.pageSize <= index && index < this.currentPage * this.pageSize) {
-                            console.log("index", index)
-                            row.categories = this.formatCategories(row.categories)
-                            return row
-                        }
+                this.loading = true
+                setTimeout(()=> {
+                    this.$axios.get(this.urlServer).then((response) => {
+                        this.totalPage = response.data.length
+                        this.loading   = false
+                        this.tableData = response.data.filter((row, index) => {
+                            if ( (this.currentPage-1) * this.pageSize <= index && index < this.currentPage * this.pageSize) {
+                                row.categories = this.formatCategories(row.categories)
+                                return row
+                            }
+                        })
                     })
-                    
-                    this.tableData = data;
-                })
+                }, 500);
             },
             formatCategories(ids) {
                 let names = [];
@@ -76,7 +120,6 @@
                 return names;
             },
             handleDelete(index, id) {
-                console.log(index, id);
                 this.$confirm('Seguro que quiere eliminar?', 'Warning', {
                     cancelButtonText : 'Cancelar',
                     confirmButtonText: 'Eliminar',
@@ -97,7 +140,7 @@
                     })
                 }).catch(() => {
                                 
-                });                    
+                });
             },
             handleChangePage(currentPage){
                 this.currentPage = currentPage
@@ -107,5 +150,11 @@
     } 
 </script>
 
-<style media="screen">
+<style lang="stylus">
+    .block
+        text-align: right
+    
+    .el-row
+        margin-bottom 15px
+        
 </style>
