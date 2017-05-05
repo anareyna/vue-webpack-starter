@@ -13,9 +13,10 @@
 <style scope lang="stylus">
     ul
         padding 0
-
+        margin 0
+        
         li
             display inline-block
             padding 0 5px
-
+    
 </style>
