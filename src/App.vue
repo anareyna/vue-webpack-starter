@@ -11,9 +11,13 @@
 </template>
 
 <script>
-    export default {
-        name: 'app',
-    }
+    // import Vue from 'vue'
+    // import Component from 'vue-class-component'
+
+    
+    // export default {
+    //     name: 'app',
+    // }
 </script>
 
 <style lang="stylus">
@@ -36,7 +40,4 @@ header
 .container
     h2
         text-align center
-
-        
-        
 </style>

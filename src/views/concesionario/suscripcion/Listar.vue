@@ -1,4 +1,4 @@
-<template lang="pug"> 
+<template lang="pug">
     div
         .block
             el-pagination(
@@ -66,88 +66,102 @@
 
 <script type="text/javascript">
     
-    import Cats from "components/Cats.vue";
-    
-    export default {
-        components : {Cats},
-        props      : ["listCategories", "urlServer"],
-        data() {
-            return {
-                tableData          : [],
-                totalPage          : 0,
-                pageSize           : 10,
-                currentPage        : 1,
-                loading            : true,
-                dialogViewInfo     : false,
-                dialogViewInfoData : {}
-            }
-        },
-        mounted(){
-            this.getdata()
-        },
-        methods: {
-            handleClose(){
-                this.$confirm('Are you sure to close this dialog?') .then(_ => {
-                    done();
-                }).catch(_ => {});
-            },
-            onViewInfo(row){
-                this.dialogViewInfoData = row
-                this.dialogViewInfo     = true
-            },
-            getdata(){
-                this.loading = true
-                setTimeout(()=> {
-                    this.$axios.get(this.urlServer).then((response) => {
-                        this.totalPage = response.data.length
-                        this.loading   = false
-                        this.tableData = response.data.filter((row, index) => {
-                            if ( (this.currentPage-1) * this.pageSize <= index && index < this.currentPage * this.pageSize) {
-                                row.categories = this.formatCategories(row.categories)
-                                return row
-                            }
-                        })
-                    })
-                }, 500);
-            },
-            formatCategories(ids) {
-                let names = [];
-                for(let cat in this.listCategories){
-                    if(ids.includes(this.listCategories[cat].id)){
-                        names.push(this.listCategories[cat].name)
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import serviceSuscripcion from 'services/service.suscripcion.js'
+
+import Cats from "components/Cats.vue";
+
+@Component({
+    props : ["listCategories", "urlServer"],
+    components : {Cats}    
+})
+
+class Listar extends Vue {
+
+    tableData = []
+    totalPage = 0
+    pageSize = 10
+    currentPage = 1
+    loading = true
+    dialogViewInfo = false
+    dialogViewInfoData = {}
+    oService = new serviceSuscripcion()
+
+    mounted () {
+        this.getdata()
+    }
+
+    getdata(){
+        this.loading = true
+        
+        setTimeout(()=> {            
+            this.oService.getSuscripciones().then((response)=>{
+                this.totalPage = response.data.length
+                this.loading   = false
+                this.tableData = response.data.filter((row, index) => {
+                    if ( (this.currentPage-1) * this.pageSize <= index && index < this.currentPage * this.pageSize) {
+                        row.categories = this.formatCategories(row.categories)
+                        return row
                     }
-                }         
-                return names;
-            },
-            handleDelete(index, id) {
-                this.$confirm('Seguro que quiere eliminar?', 'Warning', {
-                    cancelButtonText : 'Cancelar',
-                    confirmButtonText: 'Eliminar',
-                    type             : 'warning'
-                }).then(() => {
-                    this.$axios.delete(this.urlServer + "/" + id).then((response) => {
-                        this.tableData.splice(index, 1)
-                        if (this.currentPage * this.pageSize > this.totalPage-1 && this.currentPage - 1 * this.pageSize == this.totalPage-1) {
-                            this.currentPage--
-                        }
-                        else{
-                            this.getdata()
-                        }
-                    })
-                    this.$notify({
-                        message: 'Se eliminó usuario.',
-                        type: 'success'
-                    })
-                }).catch(() => {
-                                
-                });
-            },
-            handleChangePage(currentPage){
-                this.currentPage = currentPage
-                this.getdata()
+                })
+            })            
+        }, 500);
+    }
+
+    handleChangePage(currentPage){
+        this.currentPage = currentPage
+        this.getdata()
+    }
+
+    formatCategories(ids){
+        let names = [];
+        for(let cat in this.listCategories){
+            if(ids.includes(this.listCategories[cat].id)){
+                names.push(this.listCategories[cat].name)
             }
         }         
-    } 
+        return names;
+    }
+
+    handleClose(){
+        this.$confirm('Are you sure to close this dialog?') .then(_ => {
+            done();
+        }).catch(_ => {});
+    }
+    
+    onViewInfo(row){
+        this.dialogViewInfoData = row
+        this.dialogViewInfo     = true
+    }
+
+    handleDelete(index, id) {
+        this.$confirm('Seguro que quiere eliminar?', 'Warning', {
+            cancelButtonText : 'Cancelar',
+            confirmButtonText: 'Eliminar',
+            type             : 'warning'
+        }).then(() => {
+            this.oService.deleteSuscripcion(id).then((response) => {            
+                this.tableData.splice(index, 1)
+                if (this.currentPage * this.pageSize > this.totalPage-1 && this.currentPage - 1 * this.pageSize == this.totalPage-1) {
+                    this.currentPage--
+                }
+                else{
+                    this.getdata()
+                }
+            })
+            this.$notify({
+                message: 'Se eliminó usuario.',
+                type: 'success'
+            })
+        }).catch(() => {
+                        
+        });
+    }
+}
+
+export default Listar;
+
 </script>
 
 <style lang="stylus">
