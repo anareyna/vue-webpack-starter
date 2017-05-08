@@ -27,9 +27,9 @@
                         cats(:data="scope.row.categories")
             el-table-column(label='Opciones' width="220")
                 template(scope='scope')                    
-                    el-button(size='small', type='primary', icon="edit" @click='onEdit(scope.row.id)') Editar                        
-                    el-button(size='small', type='danger',icon="delete" @click='onDelete(scope.$index, scope.row.id)') Delete
-                    el-button(size='small', type='info',icon="view" @click='onViewInfo(scope.row)') View
+                    el-button(size='small', type='primary', icon="edit" @click='onEdit(scope.row.id)')
+                    el-button(size='small', type='danger',icon="delete" @click='onDelete(scope.$index, scope.row.id)')
+                    el-button(size='small', type='info',icon="view" @click='onViewInfo(scope.row)')
         .block
             el-pagination(
                 layout="prev, pager, next",
