@@ -1,4 +1,4 @@
-<template lang="pug"> 
+<template lang="pug">
     main
         h1 Suscripción:
         el-row(type="flex", justify="center")
@@ -17,11 +17,11 @@
     export default {
         data() {
             return {
-                urlServer      : 'http://172.18.60.50:3004/persons',            
-                listCategories : [{name:"beauty", id:1}, {name:"foods", id:5}, {name:"travels", id:3}]
-            }
-        }
-    }
+                urlServer      : 'http://172.18.60.50:3004/persons',
+                listCategories : [{ name: 'beauty', id:1 }, { name: 'foods', id:5 }, { name: 'travels', id:3 }],
+            };
+        },
+    };
 </script>
 
 <style media="screen">

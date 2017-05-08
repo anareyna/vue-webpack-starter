@@ -1,4 +1,4 @@
-<template lang="pug"> 
+<template lang="pug">
     div
         .block
             el-pagination(
@@ -20,13 +20,13 @@
                     span {{ scope.row.names }}
             el-table-column(label="Sexo")
                 template(scope="scope")
-                    span {{ scope.row.sex }}  
+                    span {{ scope.row.sex }}
             el-table-column(label="Categorias")
                 template(scope="scope")
                     span
                         cats(:data="scope.row.categories")
             el-table-column(label='Opciones' width="220")
-                template(scope='scope')                    
+                template(scope='scope')
                     el-button(size='small', type='primary', icon="edit" @click='onEdit(scope.row.id)')
                     el-button(size='small', type='danger',icon="delete" @click='onDelete(scope.$index, scope.row.id)')
                     el-button(size='small', type='info',icon="view" @click='onViewInfo(scope.row)')
@@ -65,12 +65,12 @@
 </template>
 
 <script type="text/javascript">
-    
-    import Cats from "components/Cats.vue";
-    
+
+    import Cats from 'components/Cats.vue';
+
     export default {
-        components : {Cats},
-        props      : ["listCategories", "urlServer"],
+        components : { Cats },
+        props      : ['listCategories', 'urlServer'],
         data() {
             return {
                 tableData          : [],
@@ -79,80 +79,81 @@
                 currentPage        : 1,
                 loading            : true,
                 dialogViewInfo     : false,
-                dialogViewInfoData : {}
-            }
+                dialogViewInfoData : {},
+            };
         },
-        mounted(){
-            this.getdata()
+        mounted() {
+            this.getdata();
         },
         methods: {
-            onEdit(id){
-                this.$router.push({ name: 'editarSuscripcion', params: { id: id }})
+            onEdit(id) {
+                this.$router.push({ name: 'editarSuscripcion', params: { id } });
             },
             onDelete(index, id) {
                 this.$confirm('Seguro que quiere eliminar?', 'Eliminar Suscripción', {
-                    cancelButtonText : 'Cancelar',
-                    confirmButtonText: 'Eliminar',
-                    type             : 'warning'
+                    cancelButtonText  : 'Cancelar',
+                    confirmButtonText : 'Eliminar',
+                    type              : 'warning',
                 }).then(() => {
-                    this.$axios.delete(this.urlServer + "/" + id).then((response) => {
-                        this.tableData.splice(index, 1)
-                        if (this.currentPage * this.pageSize > this.totalPage-1 && this.currentPage - 1 * this.pageSize == this.totalPage-1) {
-                            this.currentPage--
+                    this.$axios.delete(`${this.urlServer}/${id}`).then(() => {
+                        this.tableData.splice(index, 1);
+                        if (this.currentPage * this.pageSize > this.totalPage - 1 &&
+                            this.currentPage - 1 * this.pageSize === this.totalPage - 1) {
+                            this.currentPage--;
+                        } else {
+                            this.getdata();
                         }
-                        else{
-                            this.getdata()
-                        }
-                    })
+                    });
                     this.$notify({
-                        message: 'Se eliminó usuario.',
-                        type   : 'success'
-                    })
+                        message : 'Se eliminó usuario.',
+                        type    : 'success',
+                    });
                 }).catch(() => {
-                                
+
                 });
             },
-            onViewInfo(row){
-                this.dialogViewInfoData = row
-                this.dialogViewInfo     = true
+            onViewInfo(row) {
+                this.dialogViewInfoData = row;
+                this.dialogViewInfo     = true;
             },
-            onChangePage(currentPage){
-                this.currentPage = currentPage
-                this.getdata()
+            onChangePage(currentPage) {
+                this.currentPage = currentPage;
+                this.getdata();
             },
-            getdata(){
-                this.loading = true
+            getdata() {
+                this.loading = true;
                 setTimeout(()=> {
                     this.$axios.get(this.urlServer).then((response) => {
-                        this.totalPage = response.data.length
-                        this.loading   = false
+                        this.totalPage = response.data.length;
+                        this.loading   = false;
                         this.tableData = response.data.filter((row, index) => {
-                            if ( (this.currentPage-1) * this.pageSize <= index && index < this.currentPage * this.pageSize) {
-                                row.categories = this.formatCategories(row.categories)
-                                return row
+                            if ((this.currentPage - 1) * this.pageSize <= index &&
+                                index < this.currentPage * this.pageSize) {
+                                row.categories = this.formatCategories(row.categories);
+                                return row;
                             }
-                        })
-                    })
+                        });
+                    });
                 }, 500);
             },
             formatCategories(ids) {
                 let names = [];
-                for(let cat in this.listCategories){
-                    if(ids.includes(this.listCategories[cat].id)){
-                        names.push(this.listCategories[cat].name)
+                for (let cat in this.listCategories) {
+                    if (ids.includes(this.listCategories[cat].id)) {
+                        names.push(this.listCategories[cat].name);
                     }
-                }         
+                }
                 return names;
             },
-        }
-    } 
+        },
+    };
 </script>
 
 <style lang="stylus">
     .block
         text-align: right
-    
+
     .el-row
         margin-bottom 15px
-        
+
 </style>

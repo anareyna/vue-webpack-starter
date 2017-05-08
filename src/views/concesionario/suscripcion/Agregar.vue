@@ -1,7 +1,7 @@
 <template lang="pug">
-    div 
+    div
         h2 Agregar Usuario
-        el-row(type='flex' justify="center") 
+        el-row(type='flex' justify="center")
             el-col(:span='8')
                 el-form(:model='frm', :rules='rules', ref='frm', label-width='120px', @submit.prevent.native="submitForm('frm')")
                     el-form-item(label='Nombres', prop='name')
@@ -17,67 +17,66 @@
                         el-radio-group(v-model='frm.gender')
                                 el-radio(label='Masculino')
                                 el-radio(label='Femenino')
-                    el-form-item           
+                    el-form-item
                         el-button(type='primary', native-type="submit") Agregar
-                        el-button(@click="resetForm('frm')") Reset            
+                        el-button(@click="resetForm('frm')") Reset
 </template>
 
 
 <script>
     export default {
-        props : ["listCategories", "urlServer"],
+        props: ['listCategories', 'urlServer'],
         data() {
-            return {        
+            return {
                 frm: {
-                    name: '',
-                    lastname: '',
+                    name       : '',
+                    lastname   : '',
                     categories : [],
-                    email: '',
-                    gender: ''
+                    email      : '',
+                    gender     : '',
                 },
                 rules: {
                     name: [
                         { required: true, message: 'Ingrese nombre', trigger: 'blur' },
-                        { min: 3, message: 'Minimo 3 caracteres', trigger: 'blur' }
+                        { min: 3, message: 'Minimo 3 caracteres', trigger: 'blur' },
                     ],
                     email: [
                         { required: true, message: 'Ingrese email', trigger: 'blur' },
-                        { type: 'email', message: 'Ingrese mail válido', trigger: 'blur' }
+                        { type: 'email', message: 'Ingrese mail válido', trigger: 'blur' },
                     ],
                     categories: [
-                        { type: 'array', required: true, message: 'Selecciona al menos una categoría', trigger: 'change' }
-                    ]
-                }
+                        { type: 'array', required: true, message: 'Selecciona al menos una categoría', trigger: 'change' },
+                    ],
+                },
             };
         },
         methods: {
-            submitForm(formName) {        
+            submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
-                    if (valid) {                        
+                    if (valid) {
                         this.$axios.post(this.urlServer, {
-                            "id"         : Math.random().toString(36).substr(2, 9), 
-                            "names"      : this.frm.name,
-                            "lastname"   : this.frm.lastname,
-                            "categories" : this.frm.categories,
-                            "mail"       : this.frm.email,
-                            "sex"        : this.frm.gender
-                            
-                        }).then((response) => {                            
-                            this.$router.push({name:'listarSuscripcion'})
+                            id         : Math.random().toString(36).substr(2, 9),
+                            names      : this.frm.name,
+                            lastname   : this.frm.lastname,
+                            categories : this.frm.categories,
+                            mail       : this.frm.email,
+                            sex        : this.frm.gender,
+
+                        }).then(() => {
+                            this.$router.push({ name: 'listarSuscripcion' });
                             this.$notify({
                                 message : 'Usuario suscrito.',
-                                type    : 'success'
-                            })
-                        })
+                                type    : 'success',
+                            });
+                        });
                     } else {
-                        console.log('error submit!!')
-                        return false
+                        return false;
                     }
                 });
             },
             resetForm(formName) {
                 this.$refs[formName].resetFields();
-            }
-        }
+            },
+        },
     };
 </script>

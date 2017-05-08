@@ -1,7 +1,7 @@
-<template>	
+<template>
     <div>
-        <h1>Avisos Activos</h1>		
-        <img src="../../../static/img/bg.png">		
+        <h1>Avisos Activos</h1>
+        <img src="../../../static/img/bg.png">
 
         <!-- <breadcrumb :breadcrumb="BreadcrumbAvisosActivos"></breadcrumb> -->
         <el-breadcrumb separator="/">
@@ -10,7 +10,7 @@
           <el-breadcrumb-item>promotion list</el-breadcrumb-item>
           <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
         </el-breadcrumb>
-        
+
          <template>
           <el-table
             :data="tableData"
@@ -30,52 +30,51 @@
               prop="address"
               label="Address">
             </el-table-column>
-          </el-table> 
+          </el-table>
         </template>
     </div>
 
 </template>
 
-<script type="text/javascript">	
-
-    import axios from 'axios'
+<script type="text/javascript">
+    import axios from 'axios';
     let urlBreadcrumbs 	 = 'http://www.json-generator.com/api/json/get/cvGPhPaniq?indent=2';
     let urlAvisosActivos = 'https://randomuser.me/api/?results=20';
 
-    export default {	
-        mounted(){
-            this.loadBreadcrumb();			
+    export default {
+        mounted() {
+            this.loadBreadcrumb();
         },
-        methods : {
-            loadBreadcrumb(){
+        methods: {
+            loadBreadcrumb() {
                 axios.get(urlBreadcrumbs)
-                    .then((response)=>{					  
-                      this.BreadcrumbAvisosActivos = response.data.tags;
-                    })
-            }			
+                    .then((response) => {
+                        this.BreadcrumbAvisosActivos = response.data.tags;
+                    });
+            },
         },
-        data(){
+        data() {
             return {
-                BreadcrumbAvisosActivos: [],
-                tableData: [{
-            date: '2016-05-03',
-            name: 'Tom',
-            address: 'No. 189, Grove St, Los Angeles'
-          }, {
-            date: '2016-05-02',
-            name: 'Tom',
-            address: 'No. 189, Grove St, Los Angeles'
-          }, {
-            date: '2016-05-04',
-            name: 'Tom',
-            address: 'No. 189, Grove St, Los Angeles'
-          }, {
-            date: '2016-05-01',
-            name: 'Tom',
-            address: 'No. 189, Grove St, Los Angeles'
-          }]
-            }
-        }
-    }
+                BreadcrumbAvisosActivos : [],
+                tableData   : [{
+                    date    : '2016-05-03',
+                    name    : 'Tom',
+                    address : 'No. 189, Grove St, Los Angeles',
+                }, {
+                    date    : '2016-05-02',
+                    name    : 'Tom',
+                    address : 'No. 189, Grove St, Los Angeles',
+                }, {
+                    date    : '2016-05-04',
+                    name    : 'Tom',
+                    address : 'No. 189, Grove St, Los Angeles',
+                }, {
+                    date    : '2016-05-01',
+                    name    : 'Tom',
+                    address : 'No. 189, Grove St, Los Angeles',
+                }],
+            };
+        },
+    };
 
 </script>

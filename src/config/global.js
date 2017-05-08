@@ -1,9 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
-export default{
-    init(Vue){
-        Vue.component("IconSvg", require('components/global/IconSvg.vue'))
-
+export default {
+    init(Vue) {
+        Vue.component('IconSvg', require('components/global/IconSvg.vue'))
         Vue.prototype.$axios = axios
     }
-}
+};

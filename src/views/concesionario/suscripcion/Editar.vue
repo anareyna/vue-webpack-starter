@@ -1,7 +1,7 @@
 <template lang="pug">
     div
         h2 Editar Usuario
-        el-row(type='flex' justify="center") 
+        el-row(type='flex' justify="center")
             el-col(:span='8')
                 el-form(ref='frm', :rules='rules', :model='frm', label-width='120px' @submit.prevent.native="submitForm('frm')")
                     el-form-item(label='Nombres' , prop='name')
@@ -20,7 +20,7 @@
                     el-form-item
                         el-button(type='primary', native-type="submit") Actualizar
                         router-link(:to="{name: 'listarSuscripcion'}")
-                            el-button Cancelar						
+                            el-button Cancelar
 </template>
 
 <script type="text/javascript">
@@ -54,7 +54,7 @@
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        this.$axios.put(this.urlServer + '/' + this.$route.params.id, {
+                        this.$axios.put(`${this.urlServer}/${this.$route.params.id}`, {
                             categories : this.frm.categories,
                             lastname   : this.frm.lastname,
                             mail       : this.frm.email,
@@ -74,7 +74,7 @@
             },
         },
         mounted() {
-            this.$axios.get(this.urlServer + '/' + this.$route.params.id)
+            this.$axios.get(`${this.urlServer}/${this.$route.params.id}`)
                 .then((response) => {
                     this.frm.categories = response.data.categories;
                     this.frm.email      = response.data.mail;
