@@ -25,65 +25,64 @@
 
 <script type="text/javascript">
     export default {
-        props : ['listCategories', 'urlServer'],
+        props: ['listCategories', 'urlServer'],
         data() {
-          return {
-            frm: {
-              categories: [],
-              email: '',
-              gender: '',
-              lastname: '',
-              name: '',
-            },
-            rules: {
-              name: [
-                { required: true, message: 'Ingrese nombre', trigger: 'blur' },
-                { min: 3, message: 'Minimo 3 caracteres', trigger: 'blur' }
-              ],
-              email: [
-                { required: true, message: 'Ingrese email', trigger: 'blur' },
-                { type: 'email', message: 'Ingrese mail válido', trigger: 'blur' }
-              ],
-              categories: [
-                { type: 'array', required: true, message: 'Selecciona al menos una categoría', trigger: 'change' }
-              ]
-            }
-          }
+            return {
+                frm: {
+                    categories : [],
+                    Email      : '',
+                    gender     : '',
+                    lastname   : '',
+                    name       : '',
+                },
+                rules: {
+                    name: [
+                        { required: true, message: 'Ingrese nombre', trigger: 'blur' },
+                        { min: 3, message: 'Minimo 3 caracteres', trigger: 'blur' },
+                    ],
+                    email: [
+                        { required: true, message: 'Ingrese email', trigger: 'blur' },
+                        { type: 'email', message: 'Ingrese mail válido', trigger: 'blur' },
+                    ],
+                    categories: [
+                        { type: 'array', required: true, message: 'Selecciona al menos una categoría', trigger: 'change' },
+                    ],
+                },
+            };
         },
         methods: {
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
-                    if (valid) {                            
-                        this.$axios.put(this.urlServer+"/"+this.$route.params.id, {
-                            "categories" : this.frm.categories,
-                            "lastname"   : this.frm.lastname,
-                            "mail"       : this.frm.email,
-                            "names"      : this.frm.name,
-                            "sex"        : this.frm.gender
-                        }).then((response) => {
+                    if (valid) {
+                        this.$axios.put(this.urlServer + '/' + this.$route.params.id, {
+                            categories : this.frm.categories,
+                            lastname   : this.frm.lastname,
+                            mail       : this.frm.email,
+                            names      : this.frm.name,
+                            sex        : this.frm.gender,
+                        }).then(() => {
                             this.$notify({
-                              message : 'Usuario modificado.',
-                              type    : 'success'
-                            })
-                            this.$router.push({name:'listarSuscripcion'})
-                        })
+                                message : 'Usuario modificado.',
+                                type    : 'success',
+                            });
+                            this.$router.push({ name: 'listarSuscripcion' });
+                        });
                     } else {
-                        console.log('error submit!!')
-                        return false
+                        return false;
                     }
-                })
-            }
+                });
+            },
         },
-        mounted(){
-            this.$axios.get(this.urlServer+"/"+this.$route.params.id)
-                .then((response) => {					
-                    this.frm.categories   = response.data.categories
-                    this.frm.email        = response.data.mail
-                    this.frm.gender       = response.data.sex
-                    this.frm.lastname     = response.data.lastname
-                    this.frm.name         = response.data.names
-                })		 
-        }
+        mounted() {
+            this.$axios.get(this.urlServer + '/' + this.$route.params.id)
+                .then((response) => {
+                    this.frm.categories = response.data.categories;
+                    this.frm.email      = response.data.mail;
+                    this.frm.gender     = response.data.sex;
+                    this.frm.lastname   = response.data.lastname;
+                    this.frm.name       = response.data.names;
+                });
+        },
     };
 </script>
 
