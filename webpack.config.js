@@ -16,7 +16,7 @@ module.exports = {
                 loader  : 'vue-loader',
                 options : {
                     loaders : {
-                        'stylus': 'vue-style-loader!css-loader!stylus-loader'
+                        'stylus': 'vue-style-loader!css-loader!stylus-loader?paths=src/'
                     }
                 }
             },
