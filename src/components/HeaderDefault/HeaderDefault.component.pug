@@ -1,0 +1,44 @@
+header.main-header
+    //- pre {{ packages }}
+    template(v-if="isLoading")
+        transition(name="fade")
+            .loading-background
+                .loading-background__mask.breadcrumb
+                .loading-background__mask.title
+                .loading-background__mask.printed
+                .loading-background__mask.buy-printed
+                .loading-background__mask.btn
+                .loading-background__mask.user
+                .loading-background__mask.dates
+
+    template(v-else)
+        .main-header__content
+            .main-header__left
+                el-breadcrumb(separator='>')
+                    span {{ vehicleSelected.nameVehicleType }} /&nbsp;
+                    el-breadcrumb-item(v-for="(breadcrumb, index) in breadcrumbArray", :to="breadcrumb.path", :key='index' ) {{ breadcrumb.name }}
+                h2.h2 {{ title }}
+                    el-select.main-header__vehicle-type(v-model='sltPackage', @change="setVehicleSelected(sltPackage)", v-if="isSlcTypeVehicleShown")
+                        el-option(v-for='item in concessionaire.sellersType', :key='item.idVehicleType', :label='item.nameVehicleType', :value='item.idVehicleType')
+            .main-header__right
+                .main-header__printed
+                    small Impresos disponibles&nbsp;
+                        b.brand-color {{announcementPaperPhotoAvailable }}
+
+                    small.block
+                        a.lnk-buy.brand-color(href="javascript:;") Comprar impresos
+
+                .main-header__buy-package
+                    el-button 
+                        a.main-header__buy-package-link(:href='buyPackageLink') Comprar paquete
+
+                .main-header__user
+                    small
+                        strong {{ user.name }}&nbsp;
+                        | / Paquete {{ vehicleSelected.nameVehicleType }}
+                    br
+                    small(v-if="startDateEntityPackage") del {{ startDateEntityPackage | formatDate }} al {{ endDateEntityPackage | formatDate }}&nbsp;
+                        template(v-if="daysLeft === 1 ")
+                            b.brand-color(v-if="daysLeft") Queda {{ daysLeft }} día
+                        template(v-else)
+                            b.brand-color(v-if="daysLeft") Quedan {{ daysLeft }} días

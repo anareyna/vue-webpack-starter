@@ -1,0 +1,5 @@
+{
+  "/:sellers-type/:id/package": "/:sellers-type/:id",
+  "/:departments/:id/provinces": "/:departments/:id",
+  "/:departments/:id/provinces/:id/districts": "/:departments/:id/provinces"
+}

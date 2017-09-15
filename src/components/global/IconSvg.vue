@@ -6,24 +6,23 @@
 </template>
 
 <script type="text/javascript">
-    import icon from 'static/icons/index.js'
+    import icon from 'static/icons/_index.js';
 
     export default {
-        props    : ['name'],
-        methods  :{
-            getContent(){
+        props   : ['name'],
+        methods : {
+            getContent() {
                 return icon[this.name];
             },
-            getClass(){
-                return 'icon_' + this.name ;
-            }
-        }
-    }
+            getClass() {
+                return `icon-${this.name}`;
+            },
+        },
+    };
 </script>
 
-<style media="screen" scoped>
-    i{
-        width: 350px;
-        display: inline-block;
-    }
+<style lang="stylus">
+    i
+        width 20px
+        display inline-block
 </style>

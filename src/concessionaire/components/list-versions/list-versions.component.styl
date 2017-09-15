@@ -1,0 +1,50 @@
+.neo-select 
+    select 
+        font-size 20px
+        border none 
+        color #777
+        option 
+            font-size 16px
+.el-input
+    >>>
+        .el-input__inner
+            height 44px
+            border none
+            font-size 19px
+            
+.filter-list
+    +above(1500px)
+        padding-left 18vw
+    .el-col
+        max-width 220px
+.el-table
+    font-size 14px
+    >>>
+        .cell
+            word-break initial
+        td
+            vertical-align top
+            padding 10px 0px
+            
+        th 
+            > 
+                .cell
+                    padding 0
+                    letter-spacing 1px
+                    &:first-child
+                        padding-left 18px
+        .neo-select
+            overflow hidden
+            border 1px solid rgba(112, 112, 112, 0.41)
+            border-radius 20px
+            width 113px
+            .el-input__icon
+                background-color transparent            
+            select
+                background-color transparent
+                font-size 14px
+                height 30px
+                width 125px
+    .toggle 
+        color #008afe
+        cursor pointer

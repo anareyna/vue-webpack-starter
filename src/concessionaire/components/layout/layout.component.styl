@@ -1,0 +1,96 @@
+// Global app styles
+
+@require '../../library/toolbox/element-modifiers/el-breadcrumb.styl'
+@require '../../library/toolbox/element-modifiers/el-menu.styl'
+@require '../../library/toolbox/element-modifiers/el-table.styl'
+@require '../../library/toolbox/element-modifiers/el-form.styl'
+@require '../../library/toolbox/element-modifiers/el-input.styl'
+@require '../../library/toolbox/element-modifiers/el-pagination.styl'
+@require '../../library/toolbox/element-modifiers/el-message-box.styl'
+@require '../../library/toolbox/element-modifiers/el-tooltip.styl'
+@require '../../library/toolbox/element-modifiers/el-dropdown.styl'
+
+@require 'components/NeoSelect/NeoSelect.component.styl'
+
+$brandColor = #E39836
+
+body
+    margin 0
+    font-family Arial, sans-serif
+    color #777
+
+.parent-layout
+    display flex
+    flex-direction row
+
+.layout-menu
+    position relative
+    width 110px
+    background-color #2e2e2e
+    position relative 
+
+.layout-content
+    width calc(100% - 110px)
+    position relative
+
+.main-content
+    margin -40px 20px 20px
+    padding 25px 0
+    border 1px solid #eee
+    z-index 1
+    background-color white
+    overflow hidden
+    min-height calc(100vh - 200px)
+    border-radius 4px
+    box-shadow 1px 2px 1px rgba(0,0,0, 0.05)
+    position relative
+
+.main-content__padding
+    padding 0 30px
+
+.brand-color
+    color $brandColor
+
+.align-right
+    text-align right
+
+.align-center
+    text-align center
+
+.relative
+    position relative
+
+.is-disabled
+    pointer-events none
+    opacity .5
+    cursor 'not-allowed'
+
+.el-loading-mask
+    top 0
+    width 96%
+    height 620px
+    left 2%
+
+@keyframes animatedPreloader {
+    from {
+        margin-left -40%
+    }
+    to {
+        margin-left 100%
+    }
+}
+
+.loading-background
+    &__mask
+        background-color rgba(221, 221, 221, 0.42)
+        border-radius 4px
+    > div
+        overflow hidden
+        &:before
+            content ""
+            display block
+            width 40%
+            min-height 100px
+            background -webkit-linear-gradient(left, rgba(221, 221, 221, 0), rgba(211, 211, 211, 0.25), rgba(221, 221, 221, 0))
+            margin-left 0%
+            animation animatedPreloader 1s linear infinite forwards

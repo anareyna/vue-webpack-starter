@@ -1,0 +1,141 @@
+.tooltip-packages
+    .content-tooltip
+        list-style none
+        padding 5px 10px
+        margin 0
+        font-size 13px
+        
+.loading_tooltip
+    >>>
+        .el-loading-mask
+            position relative
+            height inherit
+            
+            .el-loading-spinner
+                position relative
+                margin-top 0
+                
+                svg
+                    width 20px
+                    height 20px
+
+.el-pagination
+    opacity .95
+
+.el-row
+    >>>
+        .main-header
+            min-height 140px
+        .main-content
+            min-height calc(100vh - 180px)
+            padding-bottom 0
+            box-shadow none
+            margin-top -80px
+
+.tab-packages
+    margin-top -25px
+    background #ececec
+    >>>
+        .el-tabs__header
+            border-bottom none
+        .el-table__header
+        .el-table__body
+            th:nth-child(n+2)
+            td:nth-child(n+2)
+                text-align center
+        .el-tabs__active-bar
+            background-color white
+        .el-table__body-wrapper
+            min-height auto
+            table
+                width initial !important
+        .el-tabs__header
+            margin-bottom 0
+        .el-tabs__item
+            text-align center
+            font-size 16px
+            color #777
+            border-right 1px solid #dddddf
+            border-top-left-radius 4px
+            border-top-right-radius 4px
+            border-bottom 1px solid #e5dfd1
+            background-color #f8f8f8
+            height auto
+            padding 8px 50px
+            &.is-active
+                background white
+                color initial
+                font-weight bold
+            &:nth-child(2) // activos
+                border-top 4px solid #7ab000
+            &:nth-child(3) // pendientes de activación
+                border-top 4px solid #008afe
+            &:nth-child(4) // pendientes de pago
+                border-top 4px solid #ed2f02
+            &:nth-child(5) // de baja
+                border-top 4px solid #dadada
+        .el-tabs__nav-prev
+            left 3px
+        .el-tabs__nav-next
+            right -5px
+        .el-tabs__nav-next, .el-tabs__nav-prev
+            line-height 67px
+        .cell-padding
+            padding 10px 0
+        .tab-packages__title
+            margin-bottom 0            
+            .el-tooltip
+                border-radius 100%
+                background #525252
+                padding 0
+                width 20px
+                height 20px
+                color white
+                font-size 12px
+                border-color transparent
+                margin-left 8px
+                display inline-flex
+                justify-content center
+                align-items center
+                cursor pointer
+        .tab-packages__detail
+            opacity .8
+            font-size 14px
+            margin-top 0
+        .tab-packages__dates
+            width 80px
+            display inline-block
+            font-size 14px
+        .tab-packages__cip
+            font-size 14px
+            color #008afe
+        .tab-packages__remaining
+            font-size 14px
+            color #E39836
+        .lnk-pay
+            padding-left 40px
+            padding-right 40px
+            text-decoration none
+        .lnk-delete
+            margin-top 10px
+            font-size 14px
+            display block
+            color #777
+        .el-table:before
+            background-color transparent
+        .el-table th
+            height 60px
+        .el-table__body-wrapper
+            height calc(100vh - 330px)
+            padding-bottom 60px
+        @keyframes bounceOutLeft 
+            from 
+                opacity 1
+            to 
+                opacity 0
+                transform translate3d(-100%, 0, 0)
+
+        .remove
+            animation-duration 1s
+            animation-fill-mode both
+            animation-name bounceOutLeft

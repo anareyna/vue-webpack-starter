@@ -1,0 +1,7 @@
+el-row.parent-layout
+    el-col.layout-menu(:span="3")
+        menu-default
+    el-col.layout-content(:span="21")
+        header-default(:title="title", :breadcrumb-array="breadcrumb", :isSlcTypeVehicleShown="slcTypeVehicle")
+        .main-content
+            slot

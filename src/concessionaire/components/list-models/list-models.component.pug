@@ -1,0 +1,113 @@
+div
+    el-dialog(:visible.sync="dialogEditContactVisible")
+        h2.title Datos de Contacto Toyota Corolla
+        el-form(:model="frmEditContact")
+            el-input(v-model="frmEditContact.name")
+            el-input(v-model="frmEditContact.phone")
+            el-input(v-model="frmEditContact.email")
+        span.dialog-footer(slot="footer")
+            el-button(type="primary", @click="dialogEditContactVisible = false") Guardar
+
+    el-dialog(:visible.sync="dialogEditPromoVisible")
+        h2.title Promoción Toyota Corolla
+        el-form
+            el-input(size="large", :rows="5", type="textarea" name="description", :maxlength="3000")
+            span.remaining-chars 20 de 80 caracteres
+
+        span.dialog-footer(slot="footer")
+            el-button(type="primary", @click="dialogEditPromoVisible = false") Guardar
+
+    layout(title="Gestion 0km", :slcTypeVehicle="true", :breadcrumb="breadcrumbList")
+        .main-content__padding
+            el-row(:gutter='10')
+                el-col(:span='12', :xs='24')
+                    el-dropdown(menu-align="start" @command="onOptionsMasive")
+                        el-button
+                            i.el-icon-setting
+                            i.el-icon-caret-bottom.el-icon--right
+                        el-dropdown-menu(slot='dropdown')
+                            el-dropdown-item(command="activate", :disabled="!(checkboxSelected.idsModelsDesactives.length > 0)") Activar
+                            el-dropdown-item(:disabled="isInactiveEnabled") Enviar a impreso
+                            el-dropdown-item(command="editContact", :disabled="isInactiveEnabled") Editar datos de Contacto
+                            el-dropdown-item(command="editPromo", :disabled="isInactiveEnabled") Editar Promoción
+                            el-dropdown-item(command="deactivate", :disabled="!(checkboxSelected.idsModelsActives.length > 0)") Desactivar
+
+                el-col(:span='12', :xs='24')
+                    el-row.filter-list(:gutter='10')
+                        el-col(:span='7', :xs='24')
+                            .neo-select
+                                i(class='el-input__icon el-icon-caret-bottom')
+                                select(v-model="sltStatus")
+                                    option(value="") Estado
+                                    option(:value="1") Activo
+                                    option(:value="0") Inactivo
+
+                        el-col(:span='7', :xs='24')
+                            .neo-select
+                                i(class='el-input__icon el-icon-caret-bottom')
+                                select(v-model="sltBrand", @change="onChangeBrand")
+                                    option(value="") Marca
+                                    option(v-for="item in brands", :value="item.id") {{item.name}}
+
+                        el-col(:span='7', :xs='24')
+                            .neo-select
+                                i(class='el-input__icon el-icon-caret-bottom')
+                                select(v-model="sltModel")
+                                    option(value="") Modelo
+                                    option(v-for="item in models", :value="item.id") {{item.name}}
+
+
+                        el-col(:span='3', :xs='24')
+                            el-button(type="primary",  @click="onFilter") Filtrar
+
+
+        el-row.table-container
+            div
+                br
+                el-table(stripe ref='multipleTable', :data='modelsByModel()', border='', style='width: 100%', @select="onCheckedModel" @select-all="onSelectAllRows" v-loading.body="loading")
+                    el-table-column(type='selection', width='55')
+
+                    el-table-column(label='Marca')
+                        template(scope='scope')
+                            span(:class="isModelDisabled(scope.row.status)") {{ getNameBrand(scope.row.idBrand) }}
+
+                    el-table-column(property='modelo', label='Modelo')
+                        template(scope='scope')
+                            span(:class="isModelDisabled(scope.row.status)") {{ scope.row.name }}
+
+                    el-table-column(property='versions', label='Versiones')
+                        template(scope='scope')
+                            span(:class="isModelDisabled(scope.row.status)") {{ scope.row.versionsCount }}
+
+                    el-table-column(property='active', label='active')
+                        template(scope='scope')
+                            span(:class="{'is-disabled': !scope.row.status, 'color-green': scope.row.status}") {{ scope.row.status ? 'Activo' : 'Inactivo' }}
+
+                    el-table-column(property='interested', label='Interesados')
+                        template(scope='scope')
+                            span(:class="{'is-disabled': !scope.row.status, 'color-blue': scope.row.interestedCount>0}") {{ scope.row.interestedCount }}
+
+                    el-table-column(property='acciones', label='Acciones')
+                        template(scope='scope')
+                            div(:class="isModelDisabled(scope.row.status)")
+                                el-dropdown(menu-align="end", @command="onOptionsIndividual", @visible-change="onHoverOptionsIndividual(scope.row.id)")
+                                    el-button
+                                        i.el-icon-setting
+                                        i.el-icon-caret-bottom.el-icon--right
+                                    el-dropdown-menu(slot='dropdown')
+                                        el-dropdown-item(:disabled='!scope.row.status') Ver Ficha
+                                        el-dropdown-item(:disabled='!scope.row.status') 
+                                            router-link(:to="{name:'ListPrinted'}") Enviar a impreso
+                                        el-dropdown-item(:disabled='!scope.row.status', command="editContact") Editar datos de Contacto
+                                        el-dropdown-item(:disabled='!scope.row.status')
+                                            router-link(:to="{name:'gestion0kmVersiones', params:{id:scope.row.id}}") Ver versiones
+                                        el-dropdown-item(:disabled='!scope.row.status', command="editPromo") Editar Promoción
+                                        el-dropdown-item(:disabled='!scope.row.status', command="deactivate") Desactivar
+
+                el-pagination(
+                    v-if="modelsUser.total > pageSize"
+                    layout="prev, pager, next",
+                    :total="modelsUser.total",
+                    :page-size="pageSize",
+                    @current-change="onPage",
+                    :current-page="currentPage")

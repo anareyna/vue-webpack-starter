@@ -1,0 +1,27 @@
+nav.main-menu
+    a.main-menu__logo(href="/")
+        icon-svg(name="isotipo")
+
+    el-menu(:default-active="urlActive", class="el-menu-vertical", :router="true" )
+        el-menu-item(index="/mi-perfil")
+            icon-svg(name="profile-check")
+            p Mi perfil
+        el-menu-item(index="/gestion-0km")
+            //router-link(:to="{name:'gestion0kmListar'}")
+            icon-svg(name="menu")
+            p Gestión 0Km
+        el-menu-item(index="#")
+            icon-svg(name="profile")
+            p Interesados
+        el-menu-item(index="##")
+            icon-svg(name="store")
+            p Tienda
+        el-menu-item(index="/mis-paquetes")
+            icon-svg(name="menu")
+            p Paquetes
+        el-menu-item(index="####")
+            icon-svg(name="contact")
+            p Contactar Administrador
+        el-menu-item(index="" @click="logout()")
+            icon-svg(name="logout")
+            p Cerrar Sesión

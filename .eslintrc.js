@@ -1,19 +1,18 @@
+// 0 - turn the rule off
+// 1 - show warning
+// 2 - show error
+
 module.exports = {
   root: true,
   parser: 'babel-eslint',
-  extends: 'airbnb-base',
+  extends: 'standard',
+  globals: {
+      window : true,
+      log : true
+  },
   rules: {
-    "indent": [2, 4],
-    "key-spacing": [1, {
-        "align": {
-            "beforeColon": true
-        }
-    }],
-    "no-multi-spaces": [1, { 
-        "exceptions": { 
-            "VariableDeclarator": true 
-        } 
-    }]
+    "no-new": 0
+    //"indent": [0, 4]
   },
   // required to lint *.vue files
   plugins: [

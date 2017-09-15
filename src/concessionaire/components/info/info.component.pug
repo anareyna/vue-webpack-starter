@@ -1,0 +1,99 @@
+layout(title="Mi Perfil", :breadcrumb="breadcrumbList", :slcTypeVehicle="true")
+    template(v-if="isLoading")
+        transition(name="fade")
+            .loading-background
+                .loading-background__mask.profile-img
+                .loading-background__mask.profile-detail
+                .loading-background__mask.profile-detail
+                .loading-background__mask.profile-contact
+                .loading-background__mask.profile-contact
+                hr
+
+    template(v-else)        
+        el-row.profile__details(:gutter='100')
+            .main-content__padding
+                el-col(:sm="24", :md="12")
+                    img.profile__details-img(:src="photo")
+                    ul.profile__details-list
+                        li Concesionaria:&nbsp;
+                            span {{ concessionaire.name }}
+                        li Razón Social:&nbsp;
+                            span {{ entity.reasonCommercialName }}
+                        li RUC:&nbsp;
+                            span {{ entity.documentNumber }}
+
+                el-col(:sm="24", :md="12")
+                    p.align-right Tus datos son directamente administrados por tu asesor de servicio, si alguno no corresponde por favor comunícate directamente a contacto@neoauto.pe o al 311-6500 Anexo: 3405 o 3722
+
+        el-row.profile__form(:gutter='40')        
+            el-form.main-content__padding(ref='frm', :rules='rules', :model='frm', label-width='130px' @submit.prevent.native="" v-loading="loading")
+                p.profile__form-mandatory Mandatorios (*)
+                el-col(:sm="24", :md="12")
+                    el-form-item(label='Contacto', prop='sellerNameConcessionaire')
+                        el-input(v-model='frm.sellerNameConcessionaire', size="large", :maxlength="100")
+
+                    el-form-item(label='Email 1' , prop='email1')
+                        el-input(v-model='frm.email1', size="large", :maxlength="45")
+
+                    el-form-item(label='Email 2' , prop='email2')
+                        el-input(v-model='frm.email2', size="large", :maxlength="45")
+
+                    el-row(:gutter='20')
+                        el-col(:sm="24", :md="14")
+                            el-form-item(label='Teléfono 1', prop='phone1' )
+                                el-input(v-model='frm.phone1', size="large", :minlength="6", :maxlength="12")
+
+                        el-col(:sm="24", :md="10")
+                            el-form-item(label='Anexo 1', prop='annex1')
+                                el-input(v-model='frm.annex1', size="large" , :minlength="1", :maxlength="3")
+
+                    el-row(:gutter='20')
+                        el-col(:sm="24", :md="14")
+                            el-form-item(label='Teléfono 2', prop='phone2')
+                                el-input(v-model='frm.phone2', size="large", :minlength="6", :maxlength="12")
+
+                        el-col(:sm="24", :md="10")
+                            el-form-item(label='Anexo 2', prop='annex2')
+                                el-input(v-model='frm.annex2', size="large" , :minlength="1", :maxlength="3")
+
+                    el-form-item(label='Descripción' , prop='description')
+                        el-input(v-model='frm.description', size="large", :rows="9", type="textarea" name="description", :maxlength="5000")
+
+                el-col(:sm="24", :md="12")
+
+                    el-form-item(label='Dirección', prop='address')
+                        el-input(v-model='frm.address', size="large", :maxlength="90")
+                    
+                    el-form-item(label='Departamento', prop='department')
+                        .neo-select
+                            i(class='el-input__icon el-icon-caret-bottom')
+                            select(v-model="frm.department", v-on:change="onChangeDepartment")
+                                option(v-show="frm.department == ''", value="") Seleccionar
+                                option(v-for="item in departments", :value="item.id") {{item.name}}
+
+                    el-form-item(label='Provincia', prop='province')
+                        .neo-select
+                            i(class='el-input__icon el-icon-caret-bottom')
+                            select(v-model="frm.province", v-on:change.lazy="onChangeProvince")
+                                option(v-show="frm.province == ''", value="") Seleccionar
+                                option(v-for="item in provinces", :value="item.id") {{item.name}}
+
+                    el-form-item(label='Distrito', prop='district')
+                        .neo-select
+                            i(class='el-input__icon el-icon-caret-bottom')
+                            select(v-model="frm.district", v-on:change="onChangeDistrict")
+                                option(v-show="frm.district == ''", value="") Seleccionar
+                                option(v-for="item in districts", :value="item.id") {{item.name}}
+                    
+                    el-form-item(prop='latitude' v-show="false")
+                        el-input(v-model.decimal='frm.latitude', type="hidden")                   
+                    
+                    el-form-item(prop='longitude' v-show="false")
+                        el-input(v-model.decimal='frm.longitude', type="hidden")
+                            
+                    el-form-item(label='Mapa')
+                        gmap-map(v-if="ShowMap", :center="map", :zoom='6', map-type-id='terrain', style='width: 100%; height: 260px')
+                            gmap-marker(:position="map", :clickable="true", :draggable="true", @click="center=map" @dragend="getMarkerPosition($event.latLng)")
+
+                    el-form-item.align-right
+                        el-button(type='primary', native-type="submit", @click="onSubmit('frm')") Guardar 

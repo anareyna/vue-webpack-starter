@@ -1,0 +1,169 @@
+layout(title="Mis Paquetes", :slcTypeVehicle="true", :breadcrumb="breadcrumbList")
+    el-row(:gutter="10")
+        el-tabs.tab-packages(value="3", @tab-click="onChangeTab")
+            el-tab-pane(:label="'Paquetes Activos (' + packages[3].total + ')'", name="3", )
+                el-table(:data="packages[3].items", border="", style="width: 100%", v-loading.body="isLoading")
+                    el-table-column(label="Paquete", prop="package")
+                        template(scope='scope')
+                            .cell-padding
+                                .tab-packages__title Paquete {{ scope.row.entityPackageName | capitalize }} S/ {{ scope.row.priceEntityPackage }}
+                                    el-tooltip(:disabled="false", effect="light", placement="right-start", popper-class="tooltip-packages")
+                                        div(slot="content")                                            
+                                            template(v-if="packages[3].items[scope.$index].detail")
+                                                ul.content-tooltip
+                                                    li(v-for="item in packages[3].items[scope.$index].detail") {{ item.total }} {{ item.text }} 
+                                            template(v-else)
+                                                div.loading_tooltip(v-loading="!packages[3].items[scope.$index].detail")
+                                        span.icon-tooltip(@mouseover="showTooltip(scope.row.idPackageDurationPrice, scope.row.idPackage, scope.row.id)") ?
+                                .tab-packages__detail Compra {{ scope.row.registerDateEntityPackage | formatDate }}
+                                span.tab-packages__detail Duración {{ scope.row.durationDayEntityPackage }} días&nbsp;
+                                template(v-if="remainingDays(scope.row.endDateEntityPackage) === 1")
+                                    span.tab-packages__remaining (Te queda {{ remainingDays(scope.row.endDateEntityPackage) }} día)
+                                template(v-else)
+                                    span.tab-packages__remaining (Te quedan {{ remainingDays(scope.row.endDateEntityPackage) }} días)
+
+                    el-table-column(label="Activación", prop="activationDateEntityPackage", width="170")
+                        template(scope='scope')
+                            span(v-if="scope.row.activationDateEntityPackage") {{ scope.row.activationDateEntityPackage | formatDateByMonth }}
+                            span(v-else) -
+                    
+                    el-table-column(label="Fin", prop="endDate", width="170")
+                        template(scope='scope')
+                            span(v-if="scope.row.endDateEntityPackage") {{ scope.row.endDateEntityPackage | formatDateByMonth }}
+                            span(v-else) -
+
+                    el-table-column(label="Imp. Usados", prop="used", width="180")
+                        template(scope='scope')
+                            span {{ scope.row.announcementPaperPhotoEntityPackage - scope.row.announcementPaperPhotoAvailable }}
+
+                    el-table-column(label="Imp. Disponibles", prop="announcementPaperPhotoAvailable", width="180")
+                        template(scope='scope')
+                            span {{ scope.row.announcementPaperPhotoAvailable || '-' }}
+
+                    el-table-column(label="Acciones", width="180")
+                        template(scope='scope')
+                            span -
+
+            el-tab-pane(:label="'Pendientes de Activación (' + packages[4].total + ')'", name="4")
+                el-table(:data="packages[4].items", border="", style="width: 100%")
+                    el-table-column(label="Paquete", prop="package")
+                        template(scope='scope')
+                            .cell-padding
+                                .tab-packages__title Paquete {{ scope.row.entityPackageName | capitalize }} S/ {{ scope.row.priceEntityPackage }}
+                                    el-tooltip(:disabled="false", effect="light", placement="right-start", popper-class="tooltip-packages")
+                                        div(slot="content")
+                                            template(v-if="packages[4].items[scope.$index].detail")
+                                                ul.content-tooltip
+                                                    li(v-for="item in packages[4].items[scope.$index].detail") {{ item.total }} {{ item.text }} 
+                                            template(v-else)
+                                                div.loading_tooltip(v-loading="!packages[4].items[scope.$index].detail")
+                                        span.icon-tooltip(@mouseover="showTooltip(scope.row.idPackageDurationPrice, scope.row.idPackage, scope.row.id)") ?
+                                .tab-packages__detail Compra {{ scope.row.registerDateEntityPackage | formatDate }}
+                                span.tab-packages__detail Duración {{ scope.row.durationDayEntityPackage }} días&nbsp;
+                                template(v-if="remainingDays(scope.row.endDateEntityPackage) === 1")
+                                    span.tab-packages__remaining (Te queda {{ remainingDays(scope.row.endDateEntityPackage) }} día)
+                                template(v-else)
+                                    span.tab-packages__remaining (Te quedan {{ remainingDays(scope.row.endDateEntityPackage) }} días)
+
+                    el-table-column(label="Activación", prop="activationDate", width="170")
+                        template(scope='scope')
+                            span -
+
+                    el-table-column(label="Fin", prop="endDate", width="170")
+                        template(scope='scope')
+                            span -
+
+                    el-table-column(label="Imp. Usados", prop="used", width="180")
+                        template(scope='scope')
+                            span {{ scope.row.announcementPaperPhotoEntityPackage - scope.row.announcementPaperPhotoAvailable }}
+
+                    el-table-column(label="Imp. Disponibles", prop="available", width="180")
+                        template(scope='scope')
+                            span {{ scope.row.announcementPaperPhotoAvailable || '-' }}
+
+                    el-table-column(label="Acciones", width="180")
+                        template(scope='scope')
+                            span -
+
+            el-tab-pane(:label="'Pendientes de Pago (' + packages[2].total + ')'", name="2")
+                el-table(:data="packages[2].items", style="width: 100%",:row-class-name="deleteRow")
+                    template(v-if="packages[2].total > 0")
+                        el-table-column(label="Paquete", prop="package")
+                            template(scope='scope')
+                                .cell-padding
+                                    .tab-packages__title Paquete {{ scope.row.entityPackageName | capitalize }}
+                                    .tab-packages__detail Pago de S/ {{ scope.row.priceEntityPackage }}
+                                    .tab-packages__cip CIP {{ scope.row.id }}
+
+                        el-table-column(label="Activación", prop="activationDate", width="170")
+                            template(scope='scope')
+                                span -
+
+                        el-table-column(label="Fin", prop="endDate", width="170")
+                            template(scope='scope')
+                                span -
+
+                        el-table-column(label="Imp. Usados", prop="used", width="180")
+                            template(scope='scope')
+                                span -
+
+                        el-table-column(label="Imp. Disponibles", prop="available", width="180")
+                            template(scope='scope')
+                                span {{ scope.row.announcementPaperPhotoAvailable || '-' }}
+
+                        el-table-column.align-center(label="Acciones", width="200")
+                            template(scope='scope')
+                                .cell-padding.align-center
+                                    a(type="primary", :href= "payPackageLink(scope.row.idPackage, scope.row.idPackageDurationPrice)",class="el-button el-button--primary lnk-pay") Pagar
+                                    a.lnk-delete(href="javascript:;", @click="onDelete(scope.row.id, scope.$index)") Eliminar
+
+            el-tab-pane(:label="'De Baja (' + packages[1].total + ')'", name="1")
+                el-table(:data="packages[1].items", border="", style="width: 100%")
+                    el-table-column(label="Paquete", prop="package")
+                        template(scope='scope')
+                            .cell-padding.is-disabled
+                                .tab-packages__title Paquete {{ scope.row.entityPackageName | capitalize }} S/ {{ scope.row.priceEntityPackage }}
+                                .tab-packages__detail Compra {{ scope.row.registerDateEntityPackage | formatDate }}
+                                span.tab-packages__detail Duración {{ scope.row.durationDayEntityPackage }} días&nbsp;
+                                template(v-if="remainingDays(scope.row.endDateEntityPackage) === 1")
+                                    span.tab-packages__remaining (Te queda {{ remainingDays(scope.row.endDateEntityPackage) }} día)
+                                template(v-else)
+                                    span.tab-packages__remaining (Te quedan {{ remainingDays(scope.row.endDateEntityPackage) }} días)
+
+                    el-table-column(label="Activación", prop="activationDate", width="170")
+                        template(scope='scope')
+                            span.is-disabled(v-if="scope.row.activationDateEntityPackage") {{ scope.row.activationDateEntityPackage | formatDateByMonth }}
+                            span.is-disabled(v-else) -
+
+                    el-table-column(label="Fin", prop="endDate", width="170")
+                        template(scope='scope')
+                            span.is-disabled(v-if="scope.row.endDateEntityPackage") {{ scope.row.endDateEntityPackage | formatDateByMonth }}
+                            span.is-disabled(v-else) -
+
+                    el-table-column(label="Imp. Usados", prop="used", width="180")
+                        template(scope='scope')
+                            span.is-disabled {{ scope.row.announcementPaperPhotoEntityPackage - scope.row.announcementPaperPhotoAvailable }}
+
+                    el-table-column(label="Imp. Disponibles", prop="available", width="180")
+                        template(scope='scope')
+                            span.is-disabled {{ scope.row.announcementPaperPhotoAvailable || '-' }}
+
+                    el-table-column(label="Acciones", width="200")
+                        template(scope='scope')
+                            div
+                                el-dropdown(menu-align="end")
+                                    el-button
+                                        i.el-icon-setting
+                                        i.el-icon-caret-bottom.el-icon--right
+                                    el-dropdown-menu(slot='dropdown')
+                                        el-dropdown-item(style="display: flex")
+                                            icon-svg(name="check", style="margin-top: 5px; margin-right: 10px")
+                                            a(:href= "payPackageLink(scope.row.idPackage, scope.row.idPackageDurationPrice)", style="text-decoration:none; color:#777") Republicar
+        el-pagination(
+                    v-if="packages[currentTab].total > pageSize"
+                    layout="prev, pager, next",
+                    :total="packages[currentTab].total",
+                    :page-size="pageSize",
+                    :current-page="currentPage",
+                    @current-change="onChangePage"
+                    )

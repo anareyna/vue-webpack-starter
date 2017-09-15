@@ -1,0 +1,94 @@
+layout(title="Versiones Toyota Corolla", :breadcrumb="breadcrumbList")
+    .main-content__padding
+        el-row(:gutter='10')
+            el-col(:span='8', :xs='24')
+                el-dropdown(menu-align="start")
+                    el-button
+                        i.el-icon-setting
+                        i.el-icon-caret-bottom.el-icon--right
+                    el-dropdown-menu(slot='dropdown')
+                        el-dropdown-item() Activar
+                        el-dropdown-item() Enviar a impreso
+                        el-dropdown-item() Editar datos de Contacto
+                        el-dropdown-item() Editar Promoción
+                        el-dropdown-item() Desactivar
+
+            el-col(:span='16', :xs='24')
+                el-row.filter-list(:gutter='10')
+                    el-col(:span='5', :xs='24')
+                        .neo-select
+                            i(class='el-input__icon el-icon-caret-bottom')
+                            select()
+                                option(value="") Estado
+
+                    el-col(:span='7', :xs='24')
+                        .neo-select
+                            i(class='el-input__icon el-icon-caret-bottom')
+                            select()
+                                option(value="") Tipo de Precio 
+                    el-col(:span='4', :xs='24')
+                        el-input(placeholder='Desde $')
+                    el-col(:span='4', :xs='24')
+                        el-input(placeholder='Hasta $')
+
+                    el-col(:span='3', :xs='24')
+                        el-button(type="primary") Filtrar
+    el-row.table-container
+        div
+            br
+            el-table(style='width: 100%', border='', :data='versionsData')
+                el-table-column(type='selection')
+
+                el-table-column(property='version', label='Versión')
+                    template(scope='scope')
+                        span {{ scope.row.version }}
+
+                el-table-column(property='status', label='Estado')
+                    template(scope='scope')
+                        span {{ scope.row.status ? 'Activo' : 'Inactivo' }}        
+
+                el-table-column(property='interestedCount', label='Interesados')
+                    template(scope='scope')
+                        span {{ scope.row.interestedCount }}
+                
+                el-table-column(property='showPrice', label='Mostrar Precio' , min-width='100')
+                    template(scope='scope')
+                        .neo-select
+                            i(class='el-input__icon el-icon-caret-bottom')
+                            select                                
+                                option(v-for="item in scope.row.showPrice", :value="item.id") {{item.text}}
+
+                el-table-column(property='priceList' label='Precio Lista')
+                    template(scope='scope')
+                        span {{ scope.row.priceList }}
+
+                el-table-column(property='priceSale', label='Precio Venta', min-width='90')
+                    template(scope='scope')
+                        span {{ scope.row.priceSale }}
+
+                el-table-column(property='descriptionPromotion', label='Descripción de Promoción', min-width='180')
+                    template(scope='scope')
+                        template(v-if="showTotalDescription(scope.$index)")
+                            span {{ scope.row.descriptionPromotion }}
+                            p.toggle(@click="toggleDescription(scope.$index)") ver menos
+                        template(v-else)
+                            span {{ limitToDescription(scope.row.descriptionPromotion) }}
+                            span.toggle(@click="toggleDescription(scope.$index)") ver más
+
+                el-table-column(property='acciones', label='Acciones', width='140')
+                        template(scope='scope')
+                            div()
+                                el-dropdown(menu-align="end")
+                                    el-button
+                                        i.el-icon-setting
+                                        i.el-icon-caret-bottom.el-icon--right
+                                    el-dropdown-menu(slot='dropdown')
+                                        el-dropdown-item() Ver Ficha del modelo
+                                        el-dropdown-item() Editar Versión
+                                        el-dropdown-item() 
+                                            router-link(:to="{name:'ListPrinted'}") Enviar a impreso
+                                        el-dropdown-item() Ver interesado
+                                        el-dropdown-item() Desactivar
+            el-pagination(
+                layout="prev, pager, next",
+                :total="50")

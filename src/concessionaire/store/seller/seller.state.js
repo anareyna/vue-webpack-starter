@@ -1,0 +1,5 @@
+export default {
+  methodsUpdate: {
+    response: {}
+  }
+}

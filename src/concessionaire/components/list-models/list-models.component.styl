@@ -1,0 +1,68 @@
+// .is-disabled-row
+//     pointer-events none
+//     opacity .5
+//     cursor 'not-allowed'
+.table-container
+    position initial
+
+.filter-list
+    margin-right 25px !important
+    .el-input__inner
+        border none
+        font-size 18px
+        &::-webkit-input-placeholder
+            color #777
+.neo-select 
+    select 
+        font-size 20px
+        border none 
+        color #777
+        option 
+            font-size 16px
+
+.el-dialog__wrapper
+    .el-input 
+        margin-bottom 15px
+        font-size 16px 
+        >>>
+            input 
+                padding 20px 10px
+    .title 
+        text-align center
+        margin-top 10px
+        margin-bottom 20px
+    
+    .remaining-chars
+        text-align right
+        margin-top 10px
+        display block
+
+    >>>
+        .el-dialog--small
+            width 40%
+        .el-dialog__body
+            padding 10px 30px
+        .el-dialog__footer
+            text-align center
+            padding-bottom 30px
+
+>>>
+    .el-table__body-wrapper
+        height calc(100vh - 330px)
+        overflow-x hidden
+    .el-table__header
+        th:nth-child(4)
+        th:nth-child(5)
+        th:nth-child(6)
+            text-align center
+    .el-table__body
+        td:nth-child(4)
+        td:nth-child(5)
+        td:nth-child(6)
+            text-align center
+        td:nth-child(4)
+            color #008afe
+        .color-green
+            color #39AE3B
+        .color-blue
+            color #008afe

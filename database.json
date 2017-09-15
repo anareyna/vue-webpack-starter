@@ -1,277 +1,582 @@
 {
-  "persons": [
+ "token": {
+    "idUser": 5,
+    "token" : "ABC0123456789"
+  },
+"users":[
     {
-      "categories": [
-        3
-      ],
-      "lastname": "Enim enim aperiam eaque laaorem rem eum quae ad quam aspernatur velit dolores qui",
-      "mail": "aaladujun@yahoo.com",
-      "names": "Deserunt earum ut et voluptatem dolorem ipsam repellendus Veniam veniam minim sunt quae sit est at possimus",
-      "sex": "",
-      "id": "mwkmm5hup"
-    },
-    {
-      "id": "cfpha6met",
-      "names": "Blanditiis dolorem architecto repudiandae similique qui dolorem Nam voluptate earum similique fugiat et aliqua",
-      "lastname": "Laudantium corrupti assumenda molestiae vitae minus fugiat dolor natus",
-      "categories": [
-        5
-      ],
-      "mail": "lozuvywy@hotmail.com",
-      "sex": ""
-    },
-    {
-      "id": "ywc6zbzi6",
-      "names": "Tempore autem quo impedit cumque elit qui est ipsum enim tempora",
-      "lastname": "Hic ipsum sint accusantium nulla",
-      "categories": [
-        5
-      ],
-      "mail": "ziteqykyhi@yahoo.com",
-      "sex": ""
-    },
-    {
-      "id": "a2a2fp2g1",
-      "names": "Qui illo est incididunt facere maiores aliqua Pariatur Qui deleniti tempor et aliquip fugit distinctio Qui cupiditate ullamco voluptatum",
-      "lastname": "In quisquam sint molestias fugiat fugit",
-      "categories": [
-        3
-      ],
-      "mail": "hilalukabi@hotmail.com",
-      "sex": ""
-    },
-    {
-      "id": "3uj892ixi",
-      "names": "Dolores qui est libero eius dolorum nulla aliquid voluptatem velit iusto accusamus",
-      "lastname": "Ipsam aliquam blanditiis velit fuga Dolores quas iure minim molestiae corporis aperiam labore ut deserunt nisi maxime",
-      "categories": [
-        3
-      ],
-      "mail": "nugecuzig@gmail.com",
-      "sex": ""
-    },
-    {
-      "id": "y62fu8zbv",
-      "names": "Fugiat rerum nisi odit iure nisi magnam incididunt magna assumenda",
-      "lastname": "Aperiam sunt natus animi nemo",
-      "categories": [
-        5
-      ],
-      "mail": "jagekezu@hotmail.com",
-      "sex": ""
-    },
-    {
-      "id": "ksts9zz8c",
-      "names": "Odio delectus non odio quod tenetur enim enim dolorem perspiciatis laborum repellendus Reprehenderit non pariatur",
-      "lastname": "Nostrud dolorem enim sed vel esse consequatur odio et dolor a amet esse qui",
-      "categories": [
-        3
-      ],
-      "mail": "zetonytaga@yahoo.com",
-      "sex": ""
-    },
-    {
-      "id": "5vt3q0etq",
-      "names": "Aut veniam ex incididunt possimus amet vel incididunt debitis vero iste tempore sapiente maxime consequatur Vitae",
-      "lastname": "Non ut duis non qui alias veniam rerum proident placeat",
-      "categories": [
-        5
-      ],
-      "mail": "vuziceceza@gmail.com",
-      "sex": ""
-    },
-    {
-      "id": "bwf0s3pex",
-      "names": "Unde et inventore incididunt aut consequatur Praesentium labore",
-      "lastname": "Quia dolore et vel suscipit voluptatem vero est",
-      "categories": [
-        3
-      ],
-      "mail": "zozytafypo@hotmail.com",
-      "sex": ""
-    },
-    {
-      "id": "c7x0vc43e",
-      "names": "Aut molestias deserunt laboriosam reprehenderit voluptatem ab officia dolore",
-      "lastname": "Esse corrupti occaecat neque culpa voluptatem dolorum omnis commodi natus facilis ut officiis nisi sapiente",
-      "categories": [
-        3
-      ],
-      "mail": "xaqop@hotmail.com",
-      "sex": ""
-    },
-    {
-      "id": "dtalqbyfk",
-      "names": "Nobis repudiandae tempor nesciunt omnis sed molestiae architecto quasi delectus non qui nostrum voluptatem Quaerat debitis et dolore",
-      "lastname": "Velit sed reprehenderit ex officia saepe et in ipsum necessitatibus",
-      "categories": [
-        5
-      ],
-      "mail": "sukufobi@gmail.com",
-      "sex": ""
-    },
-    {
-      "id": "jjhsvg8e3",
-      "names": "Nemo occaecat dolores aliquip alias sit odio aperiam officiis quis voluptate ullamco eaque sed",
-      "lastname": "Et corporis earum minima reprehenderit in reiciendis nobis irure qui eaque illo sit unde",
-      "categories": [
-        3
-      ],
-      "mail": "tegit@gmail.com",
-      "sex": ""
-    },
-    {
-      "id": "7wcunxxyl",
-      "names": "Quidem nulla amet veniam omnis",
-      "lastname": "Sunt rerum eiusmod pariatur Asperiores vel veniam libero facilis possimus beatae",
-      "categories": [
-        3,
-        5
-      ],
-      "mail": "jorubuku@yahoo.com",
-      "sex": ""
-    },
-    {
-      "id": "piqz0kr6l",
-      "names": "Voluptas quia fugit eum vel velit",
-      "lastname": "Dolore velit do amet commodi ut quas officia voluptatem Delectus officia aute maiores odio",
-      "categories": [
-        3
-      ],
-      "mail": "palagus@hotmail.com",
-      "sex": ""
-    },
-    {
-      "id": "hqbyvbufa",
-      "names": "Quo et aliquam eiusmod corrupti",
-      "lastname": "Maiores adipisci sint nobis quaerat voluptate et velit qui dolorem sit culpa",
-      "categories": [
-        3,
-        5
-      ],
-      "mail": "levu@yahoo.com",
-      "sex": ""
-    },
-    {
-      "id": "iloxpsgjj",
-      "names": "A esse exercitationem veritatis aut iusto quia nihil velit voluptatem in sunt rem",
-      "lastname": "Do in id quasi quibusdam voluptatum quos sunt et quos",
-      "categories": [
-        5,
-        1
-      ],
-      "mail": "wepycokyj@gmail.com",
-      "sex": ""
-    },
-    {
-      "id": "1to2iia5i",
-      "names": "Quo harum veniam possimus nisi dolore modi officia quibusdam ea quia ullam nostrud odio commodi beatae qui et",
-      "lastname": "Iusto voluptatum amet officiis sed occaecat nesciunt aut ducimus dolorem ut nihil ipsa sunt tempor",
-      "categories": [
-        1
-      ],
-      "mail": "sakicecy@yahoo.com",
-      "sex": ""
-    },
-    {
-      "id": "c0kmyw158",
-      "names": "Laboriosam error inventore porro quis saepe",
-      "lastname": "Nostrud molestiae maxime in sint irure facilis sint consectetur dolor eos sed quis culpa",
-      "categories": [
-        5
-      ],
-      "mail": "wexygu@gmail.com",
-      "sex": ""
-    },
-    {
-      "id": "9zvqgbio4",
-      "names": "Laboriosam obcaecati cupidatat reprehenderit vero in accusamus praesentium",
-      "lastname": "Nostrum dolore rerum voluptas labore quasi qui sit beatae",
-      "categories": [
-        1
-      ],
-      "mail": "watadusyz@yahoo.com",
-      "sex": ""
-    },
-    {
-      "id": "tbauw0z8x",
-      "names": "Distinctio Ut at incididunt voluptas nemo eos aliqua Nihil est",
-      "lastname": "Omnis et omnis consectetur officiis reprehenderit qui ullamco et dolores consequatur reprehenderit voluptatem nulla ea ut numquam",
-      "categories": [
-        5
-      ],
-      "mail": "hifixegi@hotmail.com",
-      "sex": ""
-    },
-    {
-      "id": "ylxvl7ti1",
-      "names": "Tempore sapiente eos est sed sit illo nostrud optio incidunt nobis quidem natus",
-      "lastname": "Non sunt sunt deserunt quis magna eos et dolor aspernatur et tenetur dolorum itaque et tempor autem",
-      "categories": [
-        5
-      ],
-      "mail": "dowecocan@gmail.com",
-      "sex": ""
-    },
-    {
-      "id": "c0b7mb6m2",
-      "names": "Omnis omnis et dolor in",
-      "lastname": "At ut id vero incididunt dolor veniam dolore autem culpa dolor tempora culpa voluptatem ipsum ullamco alias ipsum",
-      "categories": [
-        3
-      ],
-      "mail": "wajuke@gmail.com",
-      "sex": ""
-    },
-    {
-      "id": "jv9nz390p",
-      "names": "Quas excepturi neque eos deserunt dignissimos veritatis debitis dolorum fugit quidem non eos in exercitationem eos dignissimos voluptas",
-      "lastname": "Impedit libero ut quo dignissimos",
-      "categories": [
-        5
-      ],
-      "mail": "tomyrabeg@hotmail.com",
-      "sex": ""
-    },
-    {
-      "id": "btanoqbii",
-      "names": "Laudantium minima explicabo Sed incidunt quibusdam dolore quis ea ex recusandae Et",
-      "lastname": "Quos provident esse quaerat iusto repudiandae enim quis",
-      "categories": [
-        3
-      ],
-      "mail": "loraba@hotmail.com",
-      "sex": ""
-    },
-    {
-      "id": "r4ujhq3ra",
-      "names": "Facere dolore distinctio Velit elit obcaecati Nam id ullam tempora molestias quidem voluptas quod omnis",
-      "lastname": "In eiusmod recusandae Dolore distinctio Quo similique ut harum sed consequuntur in cupidatat nisi consequatur Dignissimos mollit aspernatur sint",
-      "categories": [
-        3
-      ],
-      "mail": "vexesekas@hotmail.com",
-      "sex": ""
-    },
-    {
-      "id": "vpdka2oz4",
-      "names": "asdas",
-      "lastname": "asdsa",
-      "categories": [
-        5
-      ],
-      "mail": "asd@asds.com",
-      "sex": "Masculino"
-    },
-    {
-      "id": "ucld5it99",
-      "names": "Ana",
-      "lastname": "Reyna",
-      "categories": [
-        5
-      ],
-      "mail": "ssfsdf@fgdfg.com",
-      "sex": ""
+      "id": 5,
+      "name": "John",
+      "idConcessionaire": 1,
+      "nameConcessionaire": "Mitsui Toyota",
+      "photoConcessionaire": "http://lorempixel.com/108/74",
+      "idEntity": 100,
+      "nameEntity": "Mitsui Toyota S.A.C",
+      "ruc": 34545654654,
+      "vehicleType": [
+        {
+          "id": 1,
+          "name": "Autos",
+          "idSeller": 1
+        },
+        {
+          "id": 2,
+          "name": "Motos",
+          "idSeller": 2
+        },
+        {
+          "id": 3,
+          "name": "Buses y camiones",
+          "idSeller": 3
+        }
+      ]
+
     }
-  ]
+  ],
+
+
+  "brands":[
+    {
+      "id": 1,
+      "name" : "Totota"
+    },
+    {
+      "id": 2,
+      "name" : "Hiunday"
+    },
+    {
+      "id": 3,
+      "name" : "Audi"
+    }
+  ],
+
+  "models": [
+    {
+      "id": 1,
+      "name" : "Totota - 1"
+    },
+    {
+      "id": 2,
+      "name" : "Totota - 2"
+    },
+    {
+      "id": 3,
+      "name" : "Totota - 3"
+    },
+    {
+      "id": 4,
+      "name" : "Totota - 4"
+    }
+  ],
+  "data": [
+    {
+      "id": "5951439c500a4c30dab7dad3",
+      "id_brand": 3,
+      "model": "Avensis",
+      "status": true,
+      "versions": 8,
+      "interested": 19
+    },
+    {
+      "id": "5951439c027227ae90614ec6",
+      "id_brand": 3,
+      "model": "Caldina",
+      "status": false,
+      "versions": 10,
+      "interested": 4
+    },
+    {
+      "id": "5951439c3cfddca5aad61feb",
+      "id_brand": 1,
+      "model": "Getz",
+      "status": false,
+      "versions": 17,
+      "interested": 5
+    },
+    {
+      "id": "5951439cce8a979c754c709d",
+      "id_brand": 3,
+      "model": "A8",
+      "status": true,
+      "versions": 2,
+      "interested": 11
+    },
+    {
+      "id": "5951439c8ac4a08a2ff6ca5f",
+      "id_brand": 1,
+      "model": "Creta",
+      "status": false,
+      "versions": 13,
+      "interested": 15
+    },
+    {
+      "id": "5951439c012af5c99381d366",
+      "id_brand": 3,
+      "model": "A7",
+      "status": true,
+      "versions": 17,
+      "interested": 11
+    },
+    {
+      "id": "5951439c2a1c038823e4e511",
+      "id_brand": 3,
+      "model": "Accent",
+      "status": true,
+      "versions": 8,
+      "interested": 13
+    },
+    {
+      "id": "5951439cd7edff554bda9d20",
+      "id_brand": 1,
+      "model": "Avanza",
+      "status": false,
+      "versions": 20,
+      "interested": 18
+    },
+    {
+      "id": "5951439cc7df5c85e90ef18b",
+      "id_brand": 3,
+      "model": "Avensis",
+      "status": false,
+      "versions": 11,
+      "interested": 13
+    },
+    {
+      "id": "5951439c7ee4ac699976bc1a",
+      "id_brand": 1,
+      "model": "A4",
+      "status": true,
+      "versions": 11,
+      "interested": 8
+    },
+    {
+      "id": "5951439cc907933e0cb02eb6",
+      "id_brand": 1,
+      "model": "A7",
+      "status": true,
+      "versions": 4,
+      "interested": 10
+    },
+    {
+      "id": "5951439cb76dccf81e611b86",
+      "id_brand": 2,
+      "model": "Creta",
+      "status": true,
+      "versions": 19,
+      "interested": 4
+    },
+    {
+      "id": "5951439c27bda140d8a33753",
+      "id_brand": 3,
+      "model": "Avanza",
+      "status": false,
+      "versions": 8,
+      "interested": 9
+    },
+    {
+      "id": "5951439c0e54b53016d519d4",
+      "id_brand": 1,
+      "model": "Getz",
+      "status": false,
+      "versions": 4,
+      "interested": 6
+    },
+    {
+      "id": "5951439c29b9e5872748f73f",
+      "id_brand": 2,
+      "model": "Avanza",
+      "status": false,
+      "versions": 2,
+      "interested": 17
+    },
+    {
+      "id": "5951439c836990e82b24f61e",
+      "id_brand": 1,
+      "model": "A7",
+      "status": true,
+      "versions": 20,
+      "interested": 11
+    },
+    {
+      "id": "5951439c66881dba79b5ea9b",
+      "id_brand": 2,
+      "model": "Accent",
+      "status": true,
+      "versions": 16,
+      "interested": 19
+    },
+    {
+      "id": "5951439c27596553938eecb8",
+      "id_brand": 3,
+      "model": "Getz",
+      "status": false,
+      "versions": 18,
+      "interested": 15
+    },
+    {
+      "id": "5951439cb0fca0af876b1063",
+      "id_brand": 1,
+      "model": "Caldina",
+      "status": false,
+      "versions": 12,
+      "interested": 7
+    },
+    {
+      "id": "5951439cdb24e5392589b4a6",
+      "id_brand": 3,
+      "model": "A8",
+      "status": false,
+      "versions": 12,
+      "interested": 13
+    },
+    {
+      "id": "5951439ca539b1d14113972e",
+      "id_brand": 2,
+      "model": "Getz",
+      "status": true,
+      "versions": 19,
+      "interested": 15
+    },
+    {
+      "id": "5951439c2fa5994c6efae017",
+      "id_brand": 3,
+      "model": "Avanza",
+      "status": true,
+      "versions": 6,
+      "interested": 5
+    },
+    {
+      "id": "5951439c06b1aca792285765",
+      "id_brand": 1,
+      "model": "Creta",
+      "status": true,
+      "versions": 6,
+      "interested": 19
+    },
+    {
+      "id": "5951439c581260075d60d206",
+      "id_brand": 2,
+      "model": "A4",
+      "status": false,
+      "versions": 17,
+      "interested": 15
+    },
+    {
+      "id": "5951439c9680cbd6903d3830",
+      "id_brand": 2,
+      "model": "Avanza",
+      "status": false,
+      "versions": 12,
+      "interested": 15
+    },
+    {
+      "id": "5951439c0e5001daec813542",
+      "id_brand": 3,
+      "model": "Getz",
+      "status": false,
+      "versions": 4,
+      "interested": 3
+    },
+    {
+      "id": "5951439c422a5471d5b84e2c",
+      "id_brand": 3,
+      "model": "Caldina",
+      "status": false,
+      "versions": 18,
+      "interested": 12
+    },
+    {
+      "id": "5951439cbb35e04886bc0d11",
+      "id_brand": 2,
+      "model": "A4",
+      "status": true,
+      "versions": 16,
+      "interested": 2
+    },
+    {
+      "id": "5951439c8cf94a44a815415e",
+      "id_brand": 3,
+      "model": "Creta",
+      "status": false,
+      "versions": 6,
+      "interested": 1
+    },
+    {
+      "id": "5951439cd478211a5cc614fc",
+      "id_brand": 3,
+      "model": "Getz",
+      "status": false,
+      "versions": 14,
+      "interested": 20
+    },
+    {
+      "id": "5951439c509e57ad60bb8476",
+      "id_brand": 2,
+      "model": "A7",
+      "status": true,
+      "versions": 3,
+      "interested": 14
+    },
+    {
+      "id": "5951439c3e1f4cead6640c52",
+      "id_brand": 1,
+      "model": "A8",
+      "status": true,
+      "versions": 12,
+      "interested": 3
+    },
+    {
+      "id": "5951439ce3a08b2df9c1220a",
+      "id_brand": 2,
+      "model": "Avensis",
+      "status": false,
+      "versions": 3,
+      "interested": 5
+    },
+    {
+      "id": "5951439c734458a3ebe3a880",
+      "id_brand": 1,
+      "model": "A4",
+      "status": true,
+      "versions": 13,
+      "interested": 13
+    },
+    {
+      "id": "5951439cb082056eb35602b8",
+      "id_brand": 2,
+      "model": "Getz",
+      "status": false,
+      "versions": 10,
+      "interested": 3
+    },
+    {
+      "id": "5951439c2ef8690968b84855",
+      "id_brand": 2,
+      "model": "A8",
+      "status": true,
+      "versions": 12,
+      "interested": 14
+    },
+    {
+      "id": "5951439c000d048c343cde7d",
+      "id_brand": 1,
+      "model": "A7",
+      "status": true,
+      "versions": 15,
+      "interested": 9
+    },
+    {
+      "id": "5951439c0b5a5e442489a479",
+      "id_brand": 3,
+      "model": "Accent",
+      "status": true,
+      "versions": 1,
+      "interested": 7
+    },
+    {
+      "id": "5951439c2d89f17e4248d4ad",
+      "id_brand": 3,
+      "model": "A8",
+      "status": true,
+      "versions": 7,
+      "interested": 16
+    },
+    {
+      "id": "5951439ce0f7cf5a800fdf90",
+      "id_brand": 3,
+      "model": "Accent",
+      "status": true,
+      "versions": 9,
+      "interested": 17
+    },
+    {
+      "id": "5951439c668c4337c809e91e",
+      "id_brand": 3,
+      "model": "A7",
+      "status": true,
+      "versions": 16,
+      "interested": 19
+    }
+  ],
+  "checkbox":{
+    "aa":1
+  },
+
+  "sellers-type": [
+    {
+      "id": 1,
+      "sellerType": {
+        "sellerNameConcessionaire": "Nombre de concesionario",
+        "email1": "email1@gmail.com",
+        "email2": "email2@gmail.com",
+        "phone1": 4564676,
+        "annex1": "051",
+        "phone2": 4564676,
+        "annex2": "178",
+        "description": "descripciones",
+        "address": "Av Pardo 345",
+        "latitude": -12,
+        "longitude": -70,
+        "idUbigeo": 3984
+      },
+      "package": {
+        "announcementPaperPhotoAvailable": 5,
+        "startDateEntityPackage": "2011-07-19 14:34:07",
+        "endDateEntityPackage": "2011-07-23",
+        "daysLeft": 4
+      }
+    },
+    {
+      "id": 2,
+      "sellerType": {
+        "sellerNameConcessionaire": "Nombre de concesionario 2",
+        "email1": "email1@gmail.com 2",
+        "email2": "email2@gmail.com 2",
+        "phone1": 45646762,
+        "annex1": "076",
+        "phone2": 45646762,
+        "annex2": "062",
+        "description": "descripciones2",
+        "address": "Av Pardo 345 2",
+        "latitude": -12,
+        "longitude": -70,
+        "idUbigeo": 39842
+      },
+      "package": {
+        "announcementPaperPhotoAvailable": 2,
+        "startDateEntityPackage": "2011-07-22 14:34:22",
+        "endDateEntityPackage": "2011-07-22",
+        "daysLeft": 2
+      }
+    }
+  ],
+
+
+  "departments": [
+    {
+      "id": 1,
+      "name": "Lima",
+      "provinces": [
+        {
+          "id": 11,
+          "name": "Cañete",
+          "districts": [
+              {
+                "id": 111,
+                "name": "cañete 1"
+              },
+              {
+                "id": 112,
+                "name": "cañete 2"
+              }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "Huaral",
+          "districts": [
+              {
+                "id": 121,
+                "name": "huaral 1"
+              },
+              {
+                "id": 122,
+                "name": "huaral 2"
+              }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "La Libertad",
+      "provinces": [
+        {
+          "id": 21,
+          "name": "Trujillo"
+        },
+        {
+          "id": 22,
+          "name": "Viru"
+        }
+      ],
+      "districts": [
+          {
+            "id": 211,
+            "name": "El porvenir"
+          },
+          {
+            "id": 212,
+            "name": "florencia"
+          },
+          {
+            "id": 221,
+            "name": "viru 1"
+          },
+          {
+            "id": 222,
+            "name": "viru 2"
+          }
+      ]
+    }
+  ],
+
+  "localization": {
+      "department": [
+        {
+          "id": 1,
+          "name": "Lima"
+        },
+        {
+          "id": 2,
+          "name": "La Libertad"
+        }
+      ],
+      "province": [
+        {
+          "id": 11,
+          "idDpto": 1,
+          "name": "Cañete"
+        },
+        {
+          "id": 12,
+          "idDpto": 1,
+          "name": "Huaral"
+        },
+        {
+          "id": 21,
+          "idDpto": 2,
+          "name": "Trujillo"
+        },
+        {
+          "id": 22,
+          "idDpto": 2,
+          "name": "Viru"
+        }
+      ],
+
+      "district": [
+        {
+          "id": 111,
+          "idProvince": 21,
+          "name": "El porvenir"
+        },
+        {
+          "id": 112,
+          "idProvince": 21,
+          "name": "florencia"
+        },
+        {
+          "id": 113,
+          "idProvince": 11,
+          "name": "San Luis"
+        },
+        {
+          "id": 114,
+          "idProvince": 11,
+          "name": "Mala"
+        }
+      ]
+
+  }
 }
